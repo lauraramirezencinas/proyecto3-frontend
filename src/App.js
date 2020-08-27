@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import { Switch, Route } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Encabezado from './components/Navbar';
+import Login from './auth/Login';
+import Busqueda from './components/Busqueda';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+
+  render() {
+    return (
+      <div >
+        <Encabezado />
+        <Switch>
+          <Route exact path="/">
+            <Busqueda/>
+          </Route>
+          <Route path="/login" component={Login} />
+        </Switch>
+      </div>
+    );
+  }
+
 }
 
 export default App;

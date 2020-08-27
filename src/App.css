@@ -36,3 +36,30 @@
     transform: rotate(360deg);
   }
 }
+
+  /* NAV BAR*/
+.navbar-light .navbar-nav .nav-link  {
+  color: #E82788 !important;
+}
+
+
+/* BUSQUEDA*/
+.ubication{
+  color: #E32283;
+  font-size: 25px;
+  font-weight: bold;  
+}
+
+.formBusqueda{
+  width: 300px;
+  margin-top:5px;
+  border: solid 2px #CCCACB
+}
+
+.contai-busqueda{
+  padding-top: 60px;
+}
+
+.formBusqueda{
+  
+}
