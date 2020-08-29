@@ -32,6 +32,7 @@ export class Login extends Component {
                     redirect: true
                 })
                 this.props.getUser(response)
+                
             })
             .catch(error => console.log(error))
     }
@@ -44,7 +45,7 @@ export class Login extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleFormSubmit} className="d-flex justify-content-center">
+                <form onSubmit={this.handleFormSubmit} >
                     <div className="row">
                         <div className="col-xs-12 col-sm-6 col-md-8">
                             <h4>Inicia sesión con correo electrónico</h4>

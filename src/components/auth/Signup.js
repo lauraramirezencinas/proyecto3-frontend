@@ -32,11 +32,13 @@ export class Signup extends Component {
                     apellido: '',
                     email: '',
                     password: '',
-                    isBaker: false,
+                    isBaker: response.isBaker,
                     redirect:true
                     
                 })
                 this.props.getUser(response)
+               
+                
             })
             .catch(error => console.log(error))
     }
@@ -44,19 +46,17 @@ export class Signup extends Component {
     renderRedirect = () => {
         if(this.state.redirect === true && this.state.isBaker === false){
             return <Redirect to= '/'/>
+        }else if(this.state.redirect === true && this.state.isBaker === true){
+            let id=this.props.getUser.id
+            return <Redirect to="/formbaker"/>
         }
     }
 
-    renderBaker =()=>{
-        if(this.state.isBaker){
-            return <Redirect to='/formbaker' />
-        }
-    }
    
-
     render() {
+        
         return (
-            <div>
+            <div className="signup">
                 <form onSubmit={this.handleFormSubmit}>
                     <div className="col-xs-12 col-sm-6 col-md-8">
                         <h4>Registrate con correo electrónico</h4>
@@ -90,14 +90,13 @@ export class Signup extends Component {
                         <input type="checkbox" name="isBaker" onChange={e => this.handleChange(e)} value="true" />
                     </div>
                     <div className="col-xs-12 col-sm-6 col-md-8 ">
-                        <input type="submit"  value="Registrame" />
+                        <input type="submit" value="Registrame" />
                     </div>
                     <div className="col-xs-12 col-sm-6 col-md-8 ">
                         <p>¿Ya tienes una cuenta?</p>
                         <Link to={"/login"}> Login</Link>
                     </div>
                     {this.renderRedirect()}
-                    {this.renderBaker()}
                 </form>
                 
             </div>

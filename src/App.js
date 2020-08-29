@@ -7,7 +7,7 @@ import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
 import Signup from './components/auth/Signup';
 import Busqueda from './components/Busqueda';
-//import ProtectedRoute from './auth/protected-route.js'
+import ProtectedRoute from './auth/protected-route.js'
 import Profile from './components/Profile';
 import FormBaker from './components/auth/FormBaker';
 
@@ -15,17 +15,19 @@ class App extends Component {
 
   constructor(props) {
     super(props)
-    this.state = { loggedInUser: null };
+    this.state = { loggedInUser: JSON.parse(localStorage.getItem('user')) };
   }
 
   getTheUser = (userObj) => {
     this.setState({
       loggedInUser: userObj
     })
+    localStorage.setItem('user', JSON.stringify(userObj));
   }
 
 
   render() {
+    
     return (
       <div >
         <Encabezado user={this.state.loggedInUser} key={this.state.loggedInUser} />
@@ -34,9 +36,10 @@ class App extends Component {
             <Busqueda/>
           </Route>
           <Route exact path="/signup" render={(props) => <Signup {...props} getUser={this.getTheUser} />}/> 
-          <Route exact path="/login" render={(props)=> <Login {...props}  getUser={this.getTheUser} /> } />
+          <Route exact path="/login" render={(props)=> <Login {...props} getUser={this.getTheUser} /> } />
           <Route exact path="/logout" render={(props) => <Logout {...props} getUser={this.getTheUser} />} />
-          <Route exact path="/formbaker" render={ (props)=> <FormBaker getUser={this.getTheUser} /> }/>
+          {/*<ProtectedRoute  path="/formbaker" user={this.state.loggedInUser} render={ (props)=> <FormBaker {...props} getUser={this.getTheUser} /> }/> */}
+          <Route  path="/formbaker" user={this.state.loggedInUser} render={ (props)=> <FormBaker {...props} getUser={this.getTheUser} /> }/>
           <Route exact path="/profile" render={ (props)=> <Profile getUser={this.getTheUser} /> }/>
         {/* <ProtectedRoute path="/profile" user={this.state.loggedInUser} component={Profile} /> */}
         </Switch>
