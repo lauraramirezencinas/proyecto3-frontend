@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 
 export class FormBaker extends Component {
@@ -15,20 +16,13 @@ export class FormBaker extends Component {
             horario: '',
             logoUrl: '',
             facebook: '',
-            instagram: ''
+            instagram: '',
+            redirect: false
         };
         this.handleChange = this.handleChange.bind(this)
         this.handleFormSubmit = this.handleFormSubmit.bind(this)
 
     }
-
-    // componentDidMount() {
-    //     const id = this.props.match.params.id
-    //     axios.get(`http://localhost:3000/auth/${id}`)
-    //         .then(response => {
-    //             this.setState(response.data)
-    //         })
-    // }
 
     handleChange = (event) => {
         const { name, value } = event.target;
@@ -47,6 +41,13 @@ export class FormBaker extends Component {
             numero, cuidad, horario
         }, { withCredentials: true })
             .then(response => response)
+        this.setState({ redirect: true })
+    }
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to='/profile' />
+        }
     }
 
 
@@ -55,52 +56,28 @@ export class FormBaker extends Component {
 
         return (
             <div>
-                <h1>form baker </h1>
+                <h1 className="title-form">Panderia</h1>
                 <form onSubmit={this.handleFormSubmit} >
-                    <div className="row">
-                        <div className="col-xs-12 col-sm-6 col-md-8 ">
-                            <label>Nombre del Negocio</label>
-                        </div>
-                        <div className="col-xs-12 col-sm-6 col-md-8 ">
-                            <input type="text" name="nombreNegocio" value={this.state.nombreNegocio} onChange={e => this.handleChange(e)} />
-                        </div>
-                        <div className="col-xs-12 col-sm-6 col-md-8 ">
-                            <label>Descripcion:</label>
-                        </div>
-                        <div className="col-xs-12 col-sm-6 col-md-8 ">
-                            <input type="text" name="descripcion" value={this.state.descripcion} onChange={e => this.handleChange(e)} />
-                        </div>
-                        <div className="col-xs-12 col-sm-6 col-md-8 ">
-                            <label>calle:</label>
-                        </div>
-                        <div className="col-xs-12 col-sm-6 col-md-8 ">
-                            <input type="text" name="calle" value={this.state.calle} onChange={e => this.handleChange(e)} />
-                        </div>
-                        <div className="col-xs-12 col-sm-6 col-md-8 ">
-                            <label>Numero:</label>
-                        </div>
-                        <div className="col-xs-12 col-sm-6 col-md-8 ">
-                            <input type="text" name="numero" value={this.state.numero} onChange={e => this.handleChange(e)} />
-                        </div>
-                        <div className="col-xs-12 col-sm-6 col-md-8 ">
-                            <label>Cuidad:</label>
-                        </div>
-                        <div className="col-xs-12 col-sm-6 col-md-8 ">
-                            <input type="text" name="cuidad" value={this.state.cuidad} onChange={e => this.handleChange(e)} />
-                        </div>
-                        <div className="col-xs-12 col-sm-6 col-md-8 ">
-                            <label>Horario:</label>
-                        </div>
-                        <div className="col-xs-12 col-sm-6 col-md-8 ">
-                            <input type="text" name="horario" value={this.state.horario} onChange={e => this.handleChange(e)} />
-                        </div>
-                        <div className="col-xs-12 col-sm-6 col-md-8 ">
-                            <input type="submit" value="Entrar" />
-                        </div>
-                        <div className="col-xs-12 col-sm-6 col-md-8 ">
-
-                        </div>
+                    <div class="form-group">
+                        <label >Nombre del Negocio</label>
+                        <input type="text" class="form-control" placeholder=""
+                            name="nombreNegocio" value={this.state.nombreNegocio}
+                            onChange={e => this.handleChange(e)} />
                     </div>
+                    <div class="form-group">
+                        <label >Descripción</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" 
+                        name="descripcion" value={this.state.descripcion} 
+                        onChange={e => this.handleChange(e)}></textarea>
+                         <small class="form-text text-muted">Introduce una descripcion de tu panaderia</small>
+                    </div>
+                    
+
+                    <div className="col-xs-12 col-sm-6 col-md-8 ">
+                        <input className="boton-form" type="submit" value="Entrar" />
+                    </div>
+                    {this.renderRedirect()}
+
                 </form>
 
             </div>

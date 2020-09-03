@@ -7,15 +7,16 @@ import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
 import Signup from './components/auth/Signup';
 import Busqueda from './components/Busqueda';
-import ProtectedRoute from './auth/protected-route.js'
+//import ProtectedRoute from './auth/protected-route.js'
 import Profile from './components/Profile';
 import FormBaker from './components/auth/FormBaker';
 
 class App extends Component {
 
   constructor(props) {
-    super(props)
-    this.state = { loggedInUser: JSON.parse(localStorage.getItem('user')) };
+    super(props);
+    const local= JSON.parse(localStorage.getItem('user')) ;
+    this.state = { loggedInUser:local };
   }
 
   getTheUser = (userObj) => {
@@ -25,28 +26,46 @@ class App extends Component {
     localStorage.setItem('user', JSON.stringify(userObj));
   }
 
+  // constructor(props) {
+  //   super(props)
+  //   this.state = { loggedInUser: null };
+  // }
+
+  // getTheUser = (userObj) => {
+  //   this.setState({
+  //     loggedInUser: userObj
+  //   })
+  // }
+
+
 
   render() {
-    
+
     return (
       <div >
         <Encabezado user={this.state.loggedInUser} key={this.state.loggedInUser} />
         <Switch>
           <Route exact path="/">
-            <Busqueda/>
+            <Busqueda />
           </Route>
-          <Route exact path="/signup" render={(props) => <Signup {...props} getUser={this.getTheUser} />}/> 
-          <Route exact path="/login" render={(props)=> <Login {...props} getUser={this.getTheUser} /> } />
+          <Route exact path="/signup" render={(props) => <Signup {...props} getUser={this.getTheUser} />} />
+          <Route exact path="/login" render={(props) => <Login {...props} getUser={this.getTheUser} />} />
           <Route exact path="/logout" render={(props) => <Logout {...props} getUser={this.getTheUser} />} />
-          {/*<ProtectedRoute  path="/formbaker" user={this.state.loggedInUser} render={ (props)=> <FormBaker {...props} getUser={this.getTheUser} /> }/> */}
-          <Route  path="/formbaker" user={this.state.loggedInUser} render={ (props)=> <FormBaker {...props} getUser={this.getTheUser} /> }/>
-          <Route exact path="/profile" render={ (props)=> <Profile getUser={this.getTheUser} /> }/>
-        {/* <ProtectedRoute path="/profile" user={this.state.loggedInUser} component={Profile} /> */}
+          {/* <ProtectedRoute  path="/formbaker" user={this.state.loggedInUser} render={ (props)=> <FormBaker {...props} getUser={this.getTheUser} /> }/> */}
+          {/* <ProtectedRoute path="/profile"  
+          user={this.state.loggedInUser} 
+          component={Profile}
+          render={(props) => <Profile getUser={this.getTheUser} user={this.state.loggedInUser}/>}
+          />   */}
+          <Route path="/formbaker"  render={(props) => <FormBaker {...props} getUser={this.getTheUser} user={this.state.loggedInUser} />} /> 
+          <Route exact path="/profile" render={ (props)=> <Profile {...props} getUser={this.getTheUser} user={this.state.loggedInUser}/> }/>
+          
         </Switch>
       </div>
     );
   }
 
 }
+
 
 export default App;

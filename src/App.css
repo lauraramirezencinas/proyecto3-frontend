@@ -37,6 +37,14 @@
   }
 }
 
+.mt-30{
+  margin-top:30px;
+}
+
+.mt-50{
+  margin-top:50px;
+}
+
   /* NAV BAR*/
 .navbar-light .navbar-nav .nav-link  {
   color: #E82788 !important;
@@ -68,5 +76,52 @@ padding-top: 50px;
 /* SIGN UP*/
 
 .signup{
-  background-color: #F2F2F2;
+  
+}
+
+
+/* FORM*/
+.input-form{
+  width: 95%;
+  height: 40px;
+  margin: auto auto;
+  display: flex;
+  border: solid 1px #DFE0E2;
+}
+
+.div-form{
+margin-bottom:25px
+}
+
+.boton-form{
+  width: 95%;
+  background-color: #E32283;
+  height: 50px;
+  margin: auto auto;
+  display: flex;
+  border:solid 1px #E32283;
+  color:white
+}
+
+.title-form{
+  margin-bottom: 25px;
+  padding-left: 15px;
+  color:#60656F
+}
+
+.label-form{
+  color:#60656F;
+  margin-bottom: 25px;
+  padding-left: 15px;
+}
+
+.check-form{
+  border:solid 1px #60656F;
+  margin-left: 10px;
+}
+
+.l-form{
+  color:#1D1E20;
+  margin-bottom: 8px;
+  padding-left: 15px;
 }
