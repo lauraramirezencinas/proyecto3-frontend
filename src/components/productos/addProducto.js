@@ -23,7 +23,7 @@ export class AddProducto extends Component {
     event.preventDefault();
     this.props.onHide()
     const { nombre, descripcion, precio, ingredientes } = this.state;
-    const idUsuario = this.props.user_id;
+    const idUsuario = this.props.user._id;
     axios
       .post(
         "http://localhost:3000/producto",
@@ -45,7 +45,7 @@ export class AddProducto extends Component {
   };
 
   render() {
-    console.log(this.props)
+
     return (
       <Modal {...this.props} aria-labelledby="contained-modal-title-vcenter">
         <Modal.Header closeButton>
@@ -54,6 +54,13 @@ export class AddProducto extends Component {
         <div className="container">
           <form onSubmit={this.handleFormSubmit}>
             <div className="form-group">
+            <input
+                type="hidden"
+                className="form-control"
+                name="idUsuario"
+                value={this.props.user._id}
+                onChange={(e) => this.handleChange(e)}
+              />
               <label>Nombre</label>
               <input
                 type="text"
