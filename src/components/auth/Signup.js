@@ -110,13 +110,14 @@ export class Signup extends Component {
                 type="checkbox"
                 className="form-check-input"
                 id="exampleCheck1"
+                name="isBaker"
+                onChange={(e) => this.handleChange(e)}
+                value="true"
               />
               <label
                 className="form-check-label"
                 for="exampleCheck1"
-                name="isBaker"
-                onChange={(e) => this.handleChange(e)}
-                value="true"
+                
               >
                 Soy una panaderia{" "}
               </label>

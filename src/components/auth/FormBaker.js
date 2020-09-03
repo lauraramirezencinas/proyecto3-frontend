@@ -51,9 +51,13 @@ export class FormBaker extends Component {
         },
         { withCredentials: true }
       )
-      .then((response) => response);
-    this.setState({ redirect: true });
+      .then((response) => {
+        this.props.getUser(response.data.user);
+        this.setState({ redirect: true });
+      });
   };
+
+   
 
   renderRedirect = () => {
     if (this.state.redirect) {
@@ -138,7 +142,7 @@ export class FormBaker extends Component {
           </div>
 
 
-          <button class="btn boton-form" type="submit">
+          <button class="btn boton-form" type="submit" userUpdate={this.updateProfile}>
             Guardar
           </button>
 

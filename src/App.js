@@ -26,18 +26,9 @@ class App extends Component {
     localStorage.setItem('user', JSON.stringify(userObj));
   }
 
-  // constructor(props) {
-  //   super(props)
-  //   this.state = { loggedInUser: null };
-  // }
-
-  // getTheUser = (userObj) => {
-  //   this.setState({
-  //     loggedInUser: userObj
-  //   })
-  // }
 
 
+  
 
   render() {
 
@@ -58,7 +49,7 @@ class App extends Component {
           render={(props) => <Profile getUser={this.getTheUser} user={this.state.loggedInUser}/>}
           />   */}
           <Route path="/formbaker"  render={(props) => <FormBaker {...props} getUser={this.getTheUser} user={this.state.loggedInUser} />} /> 
-          <Route exact path="/profile" render={ (props)=> <Profile {...props} getUser={this.getTheUser} user={this.state.loggedInUser}/> }/>
+          <Route exact path="/profile" render={ (props)=> <Profile {...props} getUser={this.getTheUser} user={this.state.loggedInUser} /> }/>
           
         </Switch>
       </div>

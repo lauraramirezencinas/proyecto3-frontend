@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Modal } from "react-bootstrap";
 
-export class addProducto extends Component {
+export class AddProducto extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,84 +20,97 @@ export class addProducto extends Component {
   };
 
   handleFormSubmit = (event) => {
+    event.preventDefault();
+    this.props.onHide()
     const { nombre, descripcion, precio, ingredientes } = this.state;
+    const idUsuario = this.props.user_id;
     axios
       .post(
         "http://localhost:3000/producto",
+        {idUsuario,
         nombre,
         descripcion,
         precio,
-        ingredientes
+        ingredientes},{ withCredentials: true }
       )
-      .then((prodcuto) => {
+      .then(() => {
         this.setState({
           nombre: "",
           descripcion: "",
           precio: "",
           ingredientes: "",
         })
-      });
+      })
+      .catch(error => console.log(error))
   };
 
   render() {
+    console.log(this.props)
     return (
-      <div className="container">
-        <h1 className="title-form">Producto</h1>
-        <form onSubmit={this.handleFormSubmit}>
-          <div className="form-group">
-            <label>Nombre</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder=""
-              name="nombre"
-              value={this.state.nombre}
-              onChange={(e) => this.handleChange(e)}
-            />
-          </div>
-          <div className="form-group">
-            <label>Descripción</label>
-            <textarea
-              className="form-control"
-              id="exampleFormControlTextarea1"
-              rows="3"
-              name="descripcion"
-              value={this.state.descripcion}
-              onChange={(e) => this.handleChange(e)}
-            ></textarea>
-            <small className="form-text text-muted">
-              Introduce una descripcion de tu producto
+      <Modal {...this.props} aria-labelledby="contained-modal-title-vcenter">
+        <Modal.Header closeButton>
+          <Modal.Title>Producto</Modal.Title>
+        </Modal.Header>
+        <div className="container">
+          <form onSubmit={this.handleFormSubmit}>
+            <div className="form-group">
+              <label>Nombre</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder=""
+                name="nombre"
+                value={this.state.nombre}
+                onChange={(e) => this.handleChange(e)}
+              />
+            </div>
+            <div className="form-group">
+              <label>Descripción</label>
+              <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+                name="descripcion"
+                value={this.state.descripcion}
+                onChange={(e) => this.handleChange(e)}
+              ></textarea>
+              <small className="form-text text-muted">
+                Introduce una descripcion de tu producto
             </small>
-          </div>
-          <div className="form-group">
-            <label>Precio</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder=""
-              name="precio"
-              value={this.state.precio}
-              onChange={(e) => this.handleChange(e)}
-            />
-          </div>
-          <div className="form-group">
-            <label>Ingredientes</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder=""
-              name="ingredientes"
-              value={this.state.ingredientes}
-              onChange={(e) => this.handleChange(e)}
-            />
-          </div>
-          <button class="btn boton-form" type="submit">
-            Guardar
+            </div>
+            <div className="form-group">
+              <label>Precio</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder=""
+                name="precio"
+                value={this.state.precio}
+                onChange={(e) => this.handleChange(e)}
+              />
+            </div>
+            <div className="form-group">
+              <label>Ingredientes</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder=""
+                name="ingredientes"
+                value={this.state.ingredientes}
+                onChange={(e) => this.handleChange(e)}
+              />
+            </div>
+            <Modal.Footer>
+              <button className="btn boton-form" type="submit" >
+                Guardar
           </button>
-        </form>
-      </div>
+            </Modal.Footer>
+
+          </form>
+        </div>
+      </Modal>
     );
   }
 }
 
-export default addProducto;
+export default AddProducto;
