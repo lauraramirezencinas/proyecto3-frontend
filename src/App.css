@@ -44,6 +44,12 @@
 .mt-50{
   margin-top:50px;
 }
+.mb-30{
+  margin-bottom:30px;
+}
+.mb-50{
+  margin-bottom:50px;
+}
 
   /* NAV BAR*/
 .navbar-light .navbar-nav .nav-link  {
@@ -94,18 +100,17 @@ margin-bottom:25px
 }
 
 .boton-form{
-  width: 95%;
-  background-color: #E32283;
+  width:100%;
+  background-color: #E32283!important;
   height: 50px;
   margin: auto auto;
   display: flex;
-  border:solid 1px #E32283;
-  color:white
+  border:solid 1px #E32283!important;
+  color:white!important
 }
 
 .title-form{
   margin-bottom: 25px;
-  padding-left: 15px;
   color:#60656F
 }
 
@@ -124,4 +129,8 @@ margin-bottom:25px
   color:#1D1E20;
   margin-bottom: 8px;
   padding-left: 15px;
+}
+
+.form-check{
+  margin-bottom: 15px!important;
 }

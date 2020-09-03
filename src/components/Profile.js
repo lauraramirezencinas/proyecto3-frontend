@@ -10,9 +10,11 @@ export class Profile extends Component {
         return (
             <div>
                  <h1>Perfil</h1>
-                <h4>{this.props.user.nombre}</h4>
-                <h4>{this.props.user.apellido}</h4>
-                <button>Añadir producto</button>
+                <h5>{this.props.user.nombre}</h5>
+                <h5>{this.props.user.apellido}</h5>
+                <h5>{this.props.user.email}</h5>
+                {/* <h5>{this.props.user.direccion.calle}</h5>*/}
+                <button>Añadir producto</button> 
             </div>
         )
     }
