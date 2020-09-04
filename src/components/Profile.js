@@ -12,19 +12,19 @@ export default function Profile(props) {
 
     console.log("loggedInUser",loggedInUser)
 
-    
+    const editable=true;
     return (
-        <div>
+        <div className="container">
             <h1>Perfil</h1>
             <h5>{props.user.nombre}</h5>
             <h5>{props.user.apellido}</h5>
             <h5>{props.user.email}</h5>
             <h5>{props.user.direccion.calle}</h5>
-            <Button variant="primary" onClick={() => setModalShow(true)}>
+            <Button className="boton" variant="primary" onClick={() => setModalShow(true)}>
                 Añadir producto 
             </Button>
             <AddProducto show={modalShow} onHide={() => setModalShow(false)} user={loggedInUser}/>  
-            <ProductsGrid/>
+            <ProductsGrid editable={editable} />
         </div>
     )
 }

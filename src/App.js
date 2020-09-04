@@ -6,10 +6,10 @@ import Encabezado from './components/Navbar';
 import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
 import Signup from './components/auth/Signup';
-import Busqueda from './components/Busqueda';
 //import ProtectedRoute from './auth/protected-route.js'
 import Profile from './components/Profile';
 import FormBaker from './components/auth/FormBaker';
+import Home from './components/Home';
 
 class App extends Component {
 
@@ -37,7 +37,7 @@ class App extends Component {
         <Encabezado user={this.state.loggedInUser} key={this.state.loggedInUser} />
         <Switch>
           <Route exact path="/">
-            <Busqueda />
+            <Home />
           </Route>
           <Route exact path="/signup" render={(props) => <Signup {...props} getUser={this.getTheUser} />} />
           <Route exact path="/login" render={(props) => <Login {...props} getUser={this.getTheUser} />} />
