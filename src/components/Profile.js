@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Button } from "react-bootstrap";
 import AddProducto from './productos/AddProducto';
+import ProductsGrid from './productos/ProductsGrid';
 
 export default function Profile(props) {
 
@@ -22,7 +23,8 @@ export default function Profile(props) {
             <Button variant="primary" onClick={() => setModalShow(true)}>
                 Añadir producto 
             </Button>
-            <AddProducto show={modalShow} onHide={() => setModalShow(false)} user={loggedInUser}/>     
+            <AddProducto show={modalShow} onHide={() => setModalShow(false)} user={loggedInUser}/>  
+            <ProductsGrid/>
         </div>
     )
 }
