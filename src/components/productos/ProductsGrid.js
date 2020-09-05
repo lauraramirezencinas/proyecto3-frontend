@@ -12,22 +12,26 @@ class ProductsGrid extends Component {
         }
     }
 
-    componentDidMount() {
+    refresh(){
         if (this.props.profile){
-        axios.get('http://localhost:3000/producto/profile/', { withCredentials: true })
-            .then(response => {
-                console.log("prodcut", response.data)
-                this.setState({ productos: response.data })
+            axios.get('http://localhost:3000/producto/profile/', { withCredentials: true })
+                .then(response => {
+                    console.log("prodcut", response.data)
+                    this.setState({ productos: response.data })
+    
+                })
+            } else {
+                axios.get('http://localhost:3000/producto/all/')
+                .then(response => {
+                    console.log("prodcut", response.data)
+                    this.setState({ productos: response.data })
+    
+                })
+            }
+    }
 
-            })
-        } else {
-            axios.get('http://localhost:3000/producto/all/')
-            .then(response => {
-                console.log("prodcut", response.data)
-                this.setState({ productos: response.data })
-
-            })
-        }
+    componentDidMount() {
+        this.refresh()
     }
 
     render() {
@@ -35,8 +39,7 @@ class ProductsGrid extends Component {
 
         return (
             
-                <div className="card-columns grid">
-
+                <div className="card-columns grid" onChange={()=>this.refresh()}>
                     {productosTodos}
                 </div>
 

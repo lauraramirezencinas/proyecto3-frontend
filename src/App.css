@@ -141,6 +141,18 @@ margin-bottom:25px
   padding:5px!important
 }
 
+.precio{
+  font-weight: bold;
+  color:#60656F;
+  font-size: 20px
+}
+
+.nombre-producto{
+  font-weight: bold;
+  color:#60656F;
+  font-size: 20px
+}
+
 
 .boton{
   background-color: #E32283!important;
@@ -154,6 +166,40 @@ margin-bottom:25px
 .grid{
   margin-top: 16px;
 }
+
+.card-img, .card-img-top {
+  height: 
+}
+
+.img-perfil{
+  width: 175px;
+  border: 3px solid  #E32283;
+}
+
+.bak-campos{
+  color:#E32283;
+  font-weight: bold;
+}
+
+.bak-val{
+  color:black!important;
+  font-weight: 400!important;
+}
+
+.boton-editar{
+margin-bottom: 10px;
+color:#E32283 !important;
+background-color: white!important;
+border: 2px solid  #E32283!important;
+}
+
+.boton-borrar{
+  margin-bottom: 10px;
+  color:#E32283 !important;
+  background-color: white!important;
+  border: 2px solid  #E32283!important;
+  margin-left: 5px!important;
+  }
 
 @media (min-width: 576px) { 
   
