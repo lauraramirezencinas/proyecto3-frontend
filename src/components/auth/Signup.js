@@ -52,7 +52,8 @@ export class Signup extends Component {
 
   render() {
     return (      
-        <div className="container">
+        <div className="container mt-80">
+          <div className="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3">
           <form onSubmit={this.handleFormSubmit}>
             <div className="mt-30">
               <h4 className="title-form">Registrate</h4>
@@ -115,7 +116,7 @@ export class Signup extends Component {
                 value="true"
               />
               <label
-                className="form-check-label"
+                className="form-check-label extra-form"
                 for="exampleCheck1"
                 
               >
@@ -124,11 +125,13 @@ export class Signup extends Component {
             </div>
             <button className="btn boton-form" type="submit">Registrame</button>
             <div className="mt-30">
-              <p>¿Ya tienes una cuenta?</p>
-              <Link to={"/login"}> Login</Link>
+              <p className="extra-form">¿Ya tienes una cuenta?</p>
+              <Link className="extra-form" to={"/login"}> Login</Link>
             </div>
             {this.renderRedirect()}
           </form>
+          </div>
+          
         </div>
     );
   }

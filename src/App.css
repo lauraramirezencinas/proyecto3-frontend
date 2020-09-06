@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;1,100;1,300;1,400;1,500;1,600&family=Roboto:ital,wght@1,300&display=swap');
+
 .App {
   text-align: center;
 }
@@ -36,17 +38,34 @@
     transform: rotate(360deg);
   }
 }
+button:focus{
+  outline: none !important;
+}
 
+.mt-20{
+  margin-top:20px;
+}
 .mt-30{
   margin-top:30px;
+}
+.mt-40{
+  margin-top:40px;
 }
 
 .mt-50{
   margin-top:50px;
 }
+.mt-80{
+  margin-top:80px;
+}
+
+.mb-20{
+  margin-bottom:20px;
+}
 .mb-30{
   margin-bottom:30px;
 }
+
 .mb-50{
   margin-bottom:50px;
 }
@@ -55,19 +74,42 @@
 .navbar-light .navbar-nav .nav-link  {
   color: #E82788 !important;
 }
+.navbar{
+  box-shadow: 0px -17px 10px 10px rgba(119,119,119,1);
+}
+
+.nav-item{
+  margin-top:12px;
+  padding-top:8px;
+  padding-left: 5px;
+  border-top:1px solid #dddddd !important;
+}
+.nav-item:last-child{
+
+  margin-bottom:8px;
+}
+.navbar-light .navbar-toggler{
+  border:none !important;
+}
+
 
 
 /* BUSQUEDA*/
-.ubication{
-  color: #E32283;
-  font-size: 25px;
-  font-weight: bold;  
+.busqueda{
+  color:#E82788;
+  font-size: 35px;
+  font-weight: bold; 
+  
+  
 }
 
 .formBusqueda{
-  width: 300px;
-  margin-top:5px;
-  border: solid 2px #CCCACB
+  margin-left: 0px!important;
+  background-color: rgba(255, 255, 255, 0.637); 
+  padding: 10px;
+  border: solid 2px #CCCACB;
+  color:#60656F
+
 }
 
 .contai-busqueda{
@@ -75,15 +117,7 @@ padding-bottom: 50px;
 padding-top: 50px;
 }
 
-.formBusqueda{
-  
-}
 
-/* SIGN UP*/
-
-.signup{
-  
-}
 
 
 /* FORM*/
@@ -111,7 +145,9 @@ margin-bottom:25px
 
 .title-form{
   margin-bottom: 25px;
-  color:#60656F
+  color:#60656F;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 25px;
 }
 
 .label-form{
@@ -135,24 +171,95 @@ margin-bottom:25px
   margin-bottom: 15px!important;
 }
 
+.form-group {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.extra-form{
+  font-family: 'Montserrat', sans-serif;
+}
+
+a {
+  color:#E32283!important;
+} 
+
+.label-form{
+  font-family: 'Montserrat', sans-serif;
+  padding-left: 0px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.direccion{
+  font-family: 'Montserrat', sans-serif;
+  color:#60656F;
+}
 
 /* PRODUCT CARD */
+.card-columns {
+  margin-top: 40px!important;
+}
+
 .productCard{
-  padding:5px!important
+  padding:0px!important;
+  
+}
+.img-productCard{
+  height: 350px;
+}
+.card-clik{
+  cursor: pointer;
 }
 
 .precio{
+
   font-weight: bold;
   color:#60656F;
-  font-size: 20px
+  font-size: 25px
 }
 
 .nombre-producto{
   font-weight: bold;
   color:#60656F;
-  font-size: 20px
+  font-size: 25px!important;
+  font-family: 'Montserrat', sans-serif;
+  height: 60px;
+  border-bottom:1px solid #dfdfdf;
+  
 }
 
+.card-row{
+  padding-top: 4px;
+}
+
+.img-card{
+  width: 50px;
+  height: 50px;
+  border: solid 2px #60656F;
+}
+
+.baker-card{
+  color:#60656F;
+  margin-bottom: 0px;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+.mh-100{
+  height:100px !important;
+}
+.ingredients-card{
+  color:#222222 !important;
+  margin-bottom: 0px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  font-size: 10px;
+  font-weight: bold;
+  height:30px;
+}
+
+.baker-name{
+  font-weight: bold;
+}
 
 .boton{
   background-color: #E32283!important;
@@ -160,7 +267,10 @@ margin-bottom:25px
   margin: auto auto;
   display: flex;
   border:solid 1px #E32283!important;
-  color:white!important
+  color:white!important;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
 }
 
 .grid{
@@ -168,61 +278,130 @@ margin-bottom:25px
 }
 
 .card-img, .card-img-top {
-  height: 
+
 }
 
+.card-text:last-child {
+  margin-bottom: 30px!important;
+}
+
+.txt-card{
+  font-weight: bold;
+}
+
+.span-card{
+  font-weight: 300; 
+}
+.col-logo{
+  margin-left: -20px;
+}
+
+
+  /* PROFILE */
+.perfil{
+  font-family: 'Montserrat', sans-serif;
+  color:#60656F;
+}  
+
 .img-perfil{
-  width: 175px;
-  border: 3px solid  #E32283;
+  width: 155px;
+  height: 155px;
+  border: 3px solid #E32283;
 }
 
 .bak-campos{
   color:#E32283;
   font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .bak-val{
   color:black!important;
   font-weight: 400!important;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .boton-editar{
-margin-bottom: 10px;
+margin-bottom: 20px;
 color:#E32283 !important;
 background-color: white!important;
 border: 2px solid  #E32283!important;
+cursor: pointer;
 }
 
 .boton-borrar{
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   color:#E32283 !important;
   background-color: white!important;
   border: 2px solid  #E32283!important;
   margin-left: 5px!important;
   }
 
+
 @media (min-width: 576px) { 
   
 .card-columns {
   column-count: 2 !important;
+  }
+  .col-logo{
+    margin-left: -10px;
+  }
+  .img-tienda{
+    width: 47px;
+  }
+  .img-productCard{
+    height: 200px;
   }
 }
 
 @media (min-width: 768px) { 
   
   .card-columns {
-    column-count: 3 !important;
+    column-count: 2 !important;
     }
+    .nav-item{
+      margin-top:0px;
+  padding-top:0px;
+  padding-left: 0px;
+  border-top:0px solid #dddddd !important;
+    }
+    .nav-item:last-child{
+
+      margin-bottom:0px;
+    }
+    .col-logo{
+      margin-left: -25px;
+    }
+    .img-productCard{
+      height: 200px;
+    }
+   
  }
 
 @media (min-width: 992px) { 
   .card-columns {
-    column-count: 4 !important;
+    column-count: 3 !important;
     }
+    .col-logo{
+      margin-left: -20px;
+    }
+    .img-productCard{
+      height: 200px;
+    }
+    
  }
 
 @media (min-width: 1200px) { 
   .card-columns {
-    column-count: 5 !important;
+    column-count: 4 !important;
+    }
+    .img-tienda{
+      width: 47px;
+    }
+    .col-logo{
+      margin-left: -10px;
+    }
+    .img-productCard{
+      height: 200px;
     }
 }

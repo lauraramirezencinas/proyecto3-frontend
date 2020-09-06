@@ -10,7 +10,7 @@ export class FormBaker extends Component {
       descripcion: "",
       calle: "",
       numero: "",
-      cuidad: "",
+      ciudad: "",
       horario: "",
       logoUrl: "",
       facebook: "",
@@ -34,7 +34,7 @@ export class FormBaker extends Component {
       descripcion,
       calle,
       numero,
-      cuidad,
+      ciudad,
       horario,
     } = this.state;
     event.preventDefault();
@@ -46,7 +46,7 @@ export class FormBaker extends Component {
           descripcion,
           calle,
           numero,
-          cuidad,
+          ciudad,
           horario,
         },
         { withCredentials: true }
@@ -57,7 +57,7 @@ export class FormBaker extends Component {
       });
   };
 
-   
+
 
   renderRedirect = () => {
     if (this.state.redirect) {
@@ -67,87 +67,89 @@ export class FormBaker extends Component {
 
   render() {
     return (
-      <div className="container">
-        <h1 className="title-form">Panderia</h1>
-        <form onSubmit={this.handleFormSubmit}>
-          <div className="form-group">
-            <label>Nombre del Negocio</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder=""
-              name="nombreNegocio"
-              value={this.state.nombreNegocio}
-              onChange={(e) => this.handleChange(e)}
-            />
-          </div>
-          <div className="form-group">
-            <label>Descripción</label>
-            <textarea
-              className="form-control"
-              id="exampleFormControlTextarea1"
-              rows="3"
-              name="descripcion"
-              value={this.state.descripcion}
-              onChange={(e) => this.handleChange(e)}
-            ></textarea>
-            <small className="form-text text-muted">
-              Introduce una descripcion de tu panaderia
+      <div className="container mt-50">
+        <div className="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3">
+          <h1 className="title-form">Panderia</h1>
+          <form onSubmit={this.handleFormSubmit}>
+            <div className="form-group">
+              <label className="label-form">Nombre del Negocio</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder=""
+                name="nombreNegocio"
+                value={this.state.nombreNegocio}
+                onChange={(e) => this.handleChange(e)}
+              />
+            </div>
+            <div className="form-group">
+              <label className="label-form">Descripción</label>
+              <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+                name="descripcion"
+                value={this.state.descripcion}
+                onChange={(e) => this.handleChange(e)}
+              ></textarea>
+              <small className="form-text text-muted">
+                Introduce una descripcion de tu panaderia
             </small>
-          </div>
-          <h4>Dirección</h4>
-          <div className="form-group">
-            <label>Calle</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder=""
-              name="calle"
-              value={this.state.calle}
-              onChange={(e) => this.handleChange(e)}
-            />
-          </div>
-          <div className="form-group">
-            <label>Numero</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder=""
-              name="numero"
-              value={this.state.numero}
-              onChange={(e) => this.handleChange(e)}
-            />
-          </div>
-          <div className="form-group">
-            <label>Cuidad</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder=""
-              name="cuidad"
-              value={this.state.cuidad}
-              onChange={(e) => this.handleChange(e)}
-            />
-          </div>
-          <div className="form-group">
-            <label>Horario</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder=""
-              name="horario"
-              value={this.state.horario}
-              onChange={(e) => this.handleChange(e)}
-            />
-          </div>
+            </div>
+            <h4 className="direccion">Dirección</h4>
+            <div className="form-group">
+              <label className="label-form">Calle</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder=""
+                name="calle"
+                value={this.state.calle}
+                onChange={(e) => this.handleChange(e)}
+              />
+            </div>
+            <div className="form-group">
+              <label className="label-form">Numero</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder=""
+                name="numero"
+                value={this.state.numero}
+                onChange={(e) => this.handleChange(e)}
+              />
+            </div>
+            <div className="form-group">
+              <label className="label-form">Ciudad</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder=""
+                name="ciudad"
+                value={this.state.ciudad}
+                onChange={(e) => this.handleChange(e)}
+              />
+            </div>
+            <div className="form-group">
+              <label className="label-form">Horario</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder=""
+                name="horario"
+                value={this.state.horario}
+                onChange={(e) => this.handleChange(e)}
+              />
+            </div>
 
-
-          <button class="btn boton-form" type="submit" userUpdate={this.updateProfile}>
-            Guardar
+            <button class="btn boton-form" type="submit" userUpdate={this.updateProfile}>
+              Guardar
           </button>
 
-          {this.renderRedirect()}
-        </form>
+            {this.renderRedirect()}
+          </form>
+        </div>
+
       </div>
     );
   }

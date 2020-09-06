@@ -10,9 +10,10 @@ export class AddProducto extends Component {
       descripcion: "",
       precio: "",
       ingredientes: "",
-      imagenUrl: "",
+      imagenUrl: ""
     };
   }
+
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -27,11 +28,13 @@ export class AddProducto extends Component {
     axios
       .post(
         "http://localhost:3000/producto",
-        {idUsuario,
-        nombre,
-        descripcion,
-        precio,
-        ingredientes},{ withCredentials: true }
+        {
+          idUsuario,
+          nombre,
+          descripcion,
+          precio,
+          ingredientes
+        }, { withCredentials: true }
       )
       .then(() => {
         this.setState({
@@ -44,6 +47,8 @@ export class AddProducto extends Component {
       .catch(error => console.log(error))
   };
 
+ 
+
   render() {
 
     return (
@@ -54,7 +59,7 @@ export class AddProducto extends Component {
         <div className="container">
           <form onSubmit={this.handleFormSubmit}>
             <div className="form-group">
-            <input
+              <input
                 type="hidden"
                 className="form-control"
                 name="idUsuario"

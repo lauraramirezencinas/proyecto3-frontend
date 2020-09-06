@@ -44,44 +44,47 @@ export class Login extends Component {
 
   render() {
     return (
-      <div className="container">
-        <form onSubmit={this.handleFormSubmit}>
-          <div className="mt-30">
-            <h4 className="title-form"> Inicia sesión</h4>
-          </div>
-          <div className="form-group">
-            <input
-              type="email"
-              className="form-control"
-              name="email"
-              value={this.state.email}
-              onChange={(e) => this.handleChange(e)}
-              aria-describedby="emailHelp"
-              placeholder="Introduce tu email"
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="password"
-              className="form-control"
-              id="exampleInputPassword1"
-              name="password"
-              value={this.state.password}
-              onChange={(e) => this.handleChange(e)}
-              placeholder="Password"
-            />
-          </div>
-          <button class="btn boton-form" type="submit">
-            Log in
+      <div className="container mt-80">
+        <div className="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3">
+          <form onSubmit={this.handleFormSubmit}>
+            <div className="mt-30">
+              <h4 className="title-form"> Inicia sesión</h4>
+            </div>
+            <div className="form-group ">
+              <input
+                type="email"
+                className="form-control"
+                name="email"
+                value={this.state.email}
+                onChange={(e) => this.handleChange(e)}
+                aria-describedby="emailHelp"
+                placeholder="Introduce tu email"
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="password"
+                className="form-control"
+                id="exampleInputPassword1"
+                name="password"
+                value={this.state.password}
+                onChange={(e) => this.handleChange(e)}
+                placeholder="Password"
+              />
+            </div>
+            <button class="btn boton-form" type="submit">
+              Log in
           </button>
 
-          <div className="mt-30">
-            <p>¿No tienes una cuenta?</p>
-            <Link to={"/signup"}> Registrate</Link>
-          </div>
+            <div className="mt-30">
+              <p className="extra-form">¿No tienes una cuenta?</p>
+              <Link xlassName="extra-form" to={"/signup"}> Registrate</Link>
+            </div>
 
-          {this.renderRedirect()}
-        </form>
+            {this.renderRedirect()}
+          </form>
+        </div>
+
       </div>
     );
   }

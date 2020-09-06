@@ -33,8 +33,9 @@ export class Encabezado extends Component {
 
         return (
 
-            <div>
+
                 <Navbar expand="lg">
+                    <div className="container">
                     <Navbar.Brand href="/">Sugar-Place</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
@@ -42,8 +43,10 @@ export class Encabezado extends Component {
                             {authLink}
                         </Nav>
                     </Navbar.Collapse>
+                    </div>
+                    
                 </Navbar>
-            </div>
+            
 
         )
     }

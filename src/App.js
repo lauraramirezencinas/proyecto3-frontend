@@ -7,9 +7,10 @@ import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
 import Signup from './components/auth/Signup';
 //import ProtectedRoute from './auth/protected-route.js'
-import Profile from './components/Profile';
+import Profile from './components/profile/Profile';
 import FormBaker from './components/auth/FormBaker';
 import Home from './components/Home';
+import Tienda from './components/Tienda';
 
 class App extends Component {
 
@@ -50,7 +51,7 @@ class App extends Component {
           />   */}
           <Route path="/formbaker"  render={(props) => <FormBaker {...props} getUser={this.getTheUser} user={this.state.loggedInUser} />} /> 
           <Route exact path="/profile" render={ (props)=> <Profile {...props} getUser={this.getTheUser} user={this.state.loggedInUser} /> }/>
-          
+          <Route  exact path="/baker/:id" component={Tienda}/>
         </Switch>
       </div>
     );
