@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Card, Button } from "react-bootstrap";
 //import {useHistory } from "react-router-dom";
+import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
 import EditProducto from "./EditProducto";
 import axios from "axios";
 
@@ -53,7 +54,12 @@ class ProductCard extends Component {
         if (this.props.editable) {
             editar = <>
                 <Card.Body className="productCard">
-                    <Card.Img className="img-productCard" variant="top" src={this.props.producto.imagenUrl} />
+                    {/* <Card.Img className="img-productCard" variant="top" src={this.props.producto.imagenUrl} /> */}
+                    <CloudinaryContext cloudName="dry1b4yex">
+
+
+                    <Image className="img-cloudy" publicId={this.props.producto.imageName} height="200" width="350" crop="fill"/>
+                    </CloudinaryContext>
                     <div className="container">
                         <div className="row card-row">
                             <div className="col-8 ">

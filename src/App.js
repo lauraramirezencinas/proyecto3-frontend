@@ -11,6 +11,7 @@ import Profile from './components/profile/Profile';
 import FormBaker from './components/auth/FormBaker';
 import Home from './components/Home';
 import Tienda from './components/Tienda';
+import Footer from './components/Footer';
 
 class App extends Component {
 
@@ -53,6 +54,7 @@ class App extends Component {
           <Route exact path="/profile" render={ (props)=> <Profile {...props} getUser={this.getTheUser} user={this.state.loggedInUser} /> }/>
           <Route  exact path="/baker/:id" component={Tienda}/>
         </Switch>
+        <Footer />
       </div>
     );
   }

@@ -405,3 +405,21 @@ cursor: pointer;
       height: 200px;
     }
 }
+
+
+ /* Footer */
+
+ .footer{
+   height: 100px;
+   background-color:#2D2D2D ;
+ }
+ .text-footer{
+   color: white;
+   font-family: 'Montserrat', sans-serif;
+   padding-top: 32px;
+ }
+
+ .img-cloudy{
+   width: 100%;
+  height: auto;
+}
