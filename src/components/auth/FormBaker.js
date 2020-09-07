@@ -72,7 +72,7 @@ export class FormBaker extends Component {
           <h1 className="title-form">Panderia</h1>
           <form onSubmit={this.handleFormSubmit}>
             <div className="form-group">
-              <label className="label-form">Nombre del Negocio</label>
+              <label className="label-form">Nombre del Negocio*</label>
               <input
                 type="text"
                 className="form-control"
@@ -83,7 +83,7 @@ export class FormBaker extends Component {
               />
             </div>
             <div className="form-group">
-              <label className="label-form">Descripción</label>
+              <label className="label-form">Descripción*</label>
               <textarea
                 className="form-control"
                 id="exampleFormControlTextarea1"
@@ -96,7 +96,7 @@ export class FormBaker extends Component {
                 Introduce una descripcion de tu panaderia
             </small>
             </div>
-            <h4 className="direccion">Dirección</h4>
+            <h4 className="direccion">Dirección*</h4>
             <div className="form-group">
               <label className="label-form">Calle</label>
               <input

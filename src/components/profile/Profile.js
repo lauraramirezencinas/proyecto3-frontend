@@ -11,6 +11,7 @@ export default function Profile(props) {
     console.log("loggedInUser", loggedInUser)
     const editable = true;
 
+ 
 
     return (
         <div className="container mt-30">

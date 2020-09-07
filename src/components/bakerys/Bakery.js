@@ -110,7 +110,7 @@ export class Bakery extends Component {
             }
         }
         return (
-            <div className="row" >
+            <div className="row container" >
                 {bakery}
             </div>
         )

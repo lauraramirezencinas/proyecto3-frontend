@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Modal } from "react-bootstrap";
+import UploadImage from "./UploadImage";
 
 export class AddProducto extends Component {
   constructor(props) {
@@ -20,28 +21,36 @@ export class AddProducto extends Component {
     this.setState({ [name]: value });
   };
 
+  handleImageChange = (file) => {
+    this.setState({imagenUrl:file})
+	};
+
   handleFormSubmit = (event) => {
     event.preventDefault();
     this.props.onHide()
-    const { nombre, descripcion, precio, ingredientes } = this.state;
+
+    const producto = new FormData();
+    producto.append('nombre', this.state.nombre);
+    producto.append('descripcion', this.state.descripcion);
+    producto.append('precio', this.state.precio);
+    producto.append('ingredientes', this.state.ingredientes);
+    producto.append('imagenUrl', this.state.imagenUrl);
     const idUsuario = this.props.user._id;
+       
     axios
       .post(
-        "http://localhost:3000/producto",
-        {
-          idUsuario,
-          nombre,
-          descripcion,
-          precio,
-          ingredientes
-        }, { withCredentials: true }
+        "http://localhost:3000/producto/",producto,
+        {headers: { 'content-type': 'multipart/form-data' }, 
+        withCredentials: true}
       )
-      .then(() => {
+      .then((response) => {
+        console.log(response.data)
         this.setState({
           nombre: "",
           descripcion: "",
           precio: "",
           ingredientes: "",
+          imagenUrl:""
         })
       })
       .catch(error => console.log(error))
@@ -58,6 +67,7 @@ export class AddProducto extends Component {
         </Modal.Header>
         <div className="container">
           <form onSubmit={this.handleFormSubmit}>
+
             <div className="form-group">
               <input
                 type="hidden"
@@ -66,7 +76,7 @@ export class AddProducto extends Component {
                 value={this.props.user._id}
                 onChange={(e) => this.handleChange(e)}
               />
-              <label>Nombre</label>
+              <label>Nombre*</label>
               <input
                 type="text"
                 className="form-control"
@@ -77,9 +87,10 @@ export class AddProducto extends Component {
               />
             </div>
             <div className="form-group">
-              <label>Descripción</label>
+              <label>Descripción*</label>
               <textarea
                 className="form-control"
+                maxlength="100"
                 id="exampleFormControlTextarea1"
                 rows="3"
                 name="descripcion"
@@ -87,11 +98,11 @@ export class AddProducto extends Component {
                 onChange={(e) => this.handleChange(e)}
               ></textarea>
               <small className="form-text text-muted">
-                Introduce una descripcion de tu producto
+                Introduce una descripcion de tu producto(máximo 100 caracteres)
             </small>
             </div>
             <div className="form-group">
-              <label>Precio</label>
+              <label>Precio*</label>
               <input
                 type="text"
                 className="form-control"
@@ -102,7 +113,7 @@ export class AddProducto extends Component {
               />
             </div>
             <div className="form-group">
-              <label>Ingredientes</label>
+              <label>Ingredientes*</label>
               <input
                 type="text"
                 className="form-control"
@@ -111,8 +122,17 @@ export class AddProducto extends Component {
                 value={this.state.ingredientes}
                 onChange={(e) => this.handleChange(e)}
               />
+              <small className="form-text text-muted">
+                Introducir los ingredientes principales
+            </small>
             </div>
+            
+            <UploadImage handleImageChange={this.handleImageChange}/>
+            <small className="form-text text-muted">
+                *Campos obligatorios
+            </small>
             <Modal.Footer>
+            
               <button className="btn boton-form" type="submit" >
                 Guardar
           </button>

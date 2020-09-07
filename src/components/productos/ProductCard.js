@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Card, Button } from "react-bootstrap";
-import { Redirect, useHistory } from "react-router-dom";
+//import {useHistory } from "react-router-dom";
 import EditProducto from "./EditProducto";
 import axios from "axios";
 
@@ -63,13 +63,14 @@ class ProductCard extends Component {
                                 <p className="precio">{this.props.producto.precio} €</p>
                             </div>
                         </div>
+                        <Card.Text className="mb-30">
+                            <p className="baker-card mh-100">{this.props.producto.descripcion}</p>
+                            <p className="ingredients-card">{this.props.producto.ingredientes}</p>
+                        </Card.Text>
                         <Button className="boton-editar" variant="primary" onClick={this.openModal}>Editar</Button>
                         <EditProducto producto={this.props.producto} show={this.state.modalOpen} onHide={() => this.closeModal()} />
                         <Button className="boton-borrar" variant="primary" onClick={this.deleteProduct}>Borrar</Button>
-                        <Card.Text className="mb-30">
-                            <p className="txt-card">Descripción: <span className="span-card">{this.props.producto.descripcion}</span></p>
-                            <p className="txt-card">Ingredientes: <span className="span-card">{this.props.producto.ingredientes}</span></p>
-                        </Card.Text>
+                       
                     </div>
                 </Card.Body>
             </>
