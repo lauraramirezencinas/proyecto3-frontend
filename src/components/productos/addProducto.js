@@ -73,7 +73,7 @@ export class AddProducto extends Component {
                 type="hidden"
                 className="form-control"
                 name="idUsuario"
-                value={this.props.user._id}
+                //value={this.props.user._id}
                 onChange={(e) => this.handleChange(e)}
               />
               <label>Nombre*</label>
@@ -127,7 +127,7 @@ export class AddProducto extends Component {
             </small>
             </div>
             
-            <UploadImage handleImageChange={this.handleImageChange}/>
+            <UploadImage handleImageChange={this.handleImageChange} fieldName="imageUrl"/>
             <small className="form-text text-muted">
                 *Campos obligatorios
             </small>

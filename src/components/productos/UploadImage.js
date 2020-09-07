@@ -11,7 +11,7 @@ function UploadImage(props) {
 				type="file"
 				className=""
 				placeholder=""
-				name="imageUrl"
+				name={props.fieldName}
 				onChange={handleChange}
 			/>
 		</div>

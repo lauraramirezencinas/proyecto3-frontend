@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import UploadImage from "../productos/UploadImage";
 
 export class FormBaker extends Component {
   constructor(props) {
@@ -26,30 +27,30 @@ export class FormBaker extends Component {
     this.setState({ [name]: value });
   };
 
+  handleImageChange = (file) => {
+    this.setState({logoUrl:file})
+	};
+
   handleFormSubmit = (event) => {
     let loggedInUser = JSON.parse(localStorage.getItem("user"));
     console.log(loggedInUser._id);
-    const {
-      nombreNegocio,
-      descripcion,
-      calle,
-      numero,
-      ciudad,
-      horario,
-    } = this.state;
     event.preventDefault();
+
+    const baker = new FormData();
+    baker.append('nombreNegocio', this.state.nombreNegocio);
+    baker.append('descripcion', this.state.descripcion);
+    baker.append('calle', this.state.calle);
+    baker.append('numero', this.state.numero);
+    baker.append('ciudad', this.state.ciudad);
+    baker.append('horario', this.state.horario);
+    baker.append('logoUrl', this.state.logoUrl);
+    
+   
     axios
       .patch(
-        `http://localhost:3000/usuario/${loggedInUser._id}`,
-        {
-          nombreNegocio,
-          descripcion,
-          calle,
-          numero,
-          ciudad,
-          horario,
-        },
-        { withCredentials: true }
+        `http://localhost:3000/usuario/${loggedInUser._id}`,baker,
+        {headers: { 'content-type': 'multipart/form-data' }, 
+        withCredentials: true}
       )
       .then((response) => {
         this.props.getUser(response.data.user);
@@ -141,7 +142,7 @@ export class FormBaker extends Component {
                 onChange={(e) => this.handleChange(e)}
               />
             </div>
-
+            <UploadImage handleImageChange={this.handleImageChange} fieldName="logoUrl"/>
             <button class="btn boton-form" type="submit" userUpdate={this.updateProfile}>
               Guardar
           </button>
