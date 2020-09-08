@@ -56,8 +56,6 @@ class ProductCard extends Component {
                 <Card.Body className="productCard">
                     {/* <Card.Img className="img-productCard" variant="top" src={this.props.producto.imagenUrl} /> */}
                     <CloudinaryContext cloudName="dry1b4yex">
-
-
                     <Image className="img-cloudy" publicId={this.props.producto.imageName} height="200" width="350" crop="fill"/>
                     </CloudinaryContext>
                     <div className="container">
@@ -84,7 +82,10 @@ class ProductCard extends Component {
         else if (this.props.isStore) {
             editar = <>
                 <Card.Body className="productCard card-clik" onClick={this.handleClick}>
-                    <Card.Img className="img-productCard" variant="top" src={this.props.producto.imagenUrl} />
+                    {/* <Card.Img className="img-productCard" variant="top" src={this.props.producto.imagenUrl} /> */}
+                    <CloudinaryContext cloudName="dry1b4yex">
+                    <Image className="img-cloudy" publicId={this.props.producto.imageName} height="200" width="350" crop="fill"/>
+                    </CloudinaryContext>
                     <div className="container ">
                         <div className="row card-row">
                             <div className="col-8">
@@ -107,7 +108,10 @@ class ProductCard extends Component {
         else {
             editar = <>
                 <Card.Body className="productCard card-clik" onClick={this.handleClick}>
-                    <Card.Img className="img-productCard" variant="top" src={this.props.producto.imagenUrl} />
+                    {/* <Card.Img className="img-productCard" variant="top" src={this.props.producto.imagenUrl} /> */}
+                    <CloudinaryContext cloudName="dry1b4yex">
+                    <Image className="img-cloudy" publicId={this.props.producto.imageName} height="200" width="350" crop="fill"/>
+                    </CloudinaryContext>
                     <div className="container ">
                         <div className="row card-row">
                             <div className="col-8 ">
