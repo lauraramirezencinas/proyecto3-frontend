@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Card, Button } from "react-bootstrap";
 //import {useHistory } from "react-router-dom";
-import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
+import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
 import EditProducto from "./EditProducto";
 import axios from "axios";
 
@@ -9,7 +9,8 @@ class ProductCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            modalOpen: false
+            modalOpen: false,
+            count: 0
         }
         this.handleClick = this.handleClick.bind();
         this.openModal = this.openModal.bind();
@@ -37,6 +38,19 @@ class ProductCard extends Component {
         })
     }
 
+    increment=()=> {
+        this.setState({
+            count: this.state.count + 1
+        });
+    };
+
+
+    decrement=()=> {
+        this.setState({
+            count:this.state.count - 1
+        });
+    };
+
     deleteProduct = () => {
         axios.delete(`http://localhost:3000/producto/${this.props.producto._id}`)
             .then(() => {
@@ -56,7 +70,7 @@ class ProductCard extends Component {
                 <Card.Body className="productCard">
                     {/* <Card.Img className="img-productCard" variant="top" src={this.props.producto.imagenUrl} /> */}
                     <CloudinaryContext cloudName="dry1b4yex">
-                    <Image className="img-cloudy" publicId={this.props.producto.imageName} height="200" width="350" crop="fill"/>
+                        <Image className="img-cloudy" publicId={this.props.producto.imageName} height="200" width="350" crop="fill" />
                     </CloudinaryContext>
                     <div className="container">
                         <div className="row card-row">
@@ -74,17 +88,17 @@ class ProductCard extends Component {
                         <Button className="boton-editar" variant="primary" onClick={this.openModal}>Editar</Button>
                         <EditProducto producto={this.props.producto} show={this.state.modalOpen} onHide={() => this.closeModal()} />
                         <Button className="boton-borrar" variant="primary" onClick={this.deleteProduct}>Borrar</Button>
-                       
+
                     </div>
                 </Card.Body>
             </>
         }
         else if (this.props.isStore) {
             editar = <>
-                <Card.Body className="productCard card-clik" onClick={this.handleClick}>
+                <Card.Body className="productCard card-clik">
                     {/* <Card.Img className="img-productCard" variant="top" src={this.props.producto.imagenUrl} /> */}
                     <CloudinaryContext cloudName="dry1b4yex">
-                    <Image className="img-cloudy" publicId={this.props.producto.imageName} height="200" width="350" crop="fill"/>
+                        <Image className="img-cloudy" publicId={this.props.producto.imageName} height="200" width="350" crop="fill" />
                     </CloudinaryContext>
                     <div className="container ">
                         <div className="row card-row">
@@ -98,9 +112,17 @@ class ProductCard extends Component {
 
                         <Card.Text>
                             <p className="baker-card mh-100">{this.props.producto.descripcion}</p>
-             <p className="ingredients-card">{this.props.producto.ingredientes}</p>
+                            <p className="ingredients-card">{this.props.producto.ingredientes}</p>
                         </Card.Text>
                     </div>
+                    <div class="row">                       
+                        <button className='dec' onClick={this.decrement}>-</button>
+                        <h2>{this.state.count}</h2>
+                        <button className='inc' onClick={this.increment}>+</button>
+                        <Button className="boton-editar" variant="primary">Agregar</Button>
+                    </div>
+
+
 
                 </Card.Body>
             </>
@@ -110,7 +132,7 @@ class ProductCard extends Component {
                 <Card.Body className="productCard card-clik" onClick={this.handleClick}>
                     {/* <Card.Img className="img-productCard" variant="top" src={this.props.producto.imagenUrl} /> */}
                     <CloudinaryContext cloudName="dry1b4yex">
-                    <Image className="img-cloudy" publicId={this.props.producto.imageName} height="200" width="350" crop="fill"/>
+                        <Image className="img-cloudy" publicId={this.props.producto.imageName} height="200" width="350" crop="fill" />
                     </CloudinaryContext>
                     <div className="container ">
                         <div className="row card-row">
@@ -124,7 +146,7 @@ class ProductCard extends Component {
 
                         <Card.Text>
                             <p className="baker-card mh-100">{this.props.producto.descripcion}</p>
-                 <p className="ingredients-card">{this.props.producto.ingredientes}</p>
+                            <p className="ingredients-card">{this.props.producto.ingredientes}</p>
                         </Card.Text>
                         <div className="row mt-30 mb-30">
                             <div className="col-3">

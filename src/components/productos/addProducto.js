@@ -4,7 +4,7 @@ import { Modal } from "react-bootstrap";
 import UploadImage from "./UploadImage";
 
 export class AddProducto extends Component {
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -53,6 +53,8 @@ export class AddProducto extends Component {
           ingredientes: "",
           imagenUrl:""
         })
+        let url = "/profile/";
+        window.location.href = url;
       })
       .catch(error => console.log(error))
   };
@@ -91,7 +93,7 @@ export class AddProducto extends Component {
               <label>Descripción*</label>
               <textarea
                 className="form-control"
-                maxlength="100"
+                maxlength="90"
                 id="exampleFormControlTextarea1"
                 rows="3"
                 name="descripcion"
@@ -99,7 +101,7 @@ export class AddProducto extends Component {
                 onChange={(e) => this.handleChange(e)}
               ></textarea>
               <small className="form-text text-muted">
-                Introduce una descripcion de tu producto(máximo 100 caracteres)
+                Introduce una descripcion de tu producto(máximo 90 caracteres)
             </small>
             </div>
             <div className="form-group">

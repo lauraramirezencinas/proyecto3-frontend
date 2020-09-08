@@ -85,7 +85,7 @@ export class Login extends Component {
               Log in
           </button>
             {message}
-            <div className="mt-30">
+            <div className="mt-30 mb-50">
               <p className="extra-form">¿No tienes una cuenta?</p>
               <Link xlassName="extra-form" to={"/signup"}> Registrate</Link>
             </div>

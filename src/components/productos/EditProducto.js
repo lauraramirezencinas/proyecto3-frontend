@@ -24,9 +24,12 @@ export class EditProducto extends Component {
         this.props.onHide()
         const { nombre, descripcion, precio, ingredientes } = this.state;
         axios.patch(`http://localhost:3000/producto/${this.props.producto._id}`,
-        { nombre, descripcion, precio, ingredientes},{ withCredentials: true } ) 
-        let url = "/profile/";
-        window.location.href = url;
+        { nombre, descripcion, precio, ingredientes},{ withCredentials: true } )
+        .then(res=>{
+          let url = "/profile/";
+          window.location.href = url;
+        }) 
+        
       };
 
     render() {
@@ -53,13 +56,14 @@ export class EditProducto extends Component {
                   <textarea
                     className="form-control"
                     id="exampleFormControlTextarea1"
+                    maxLength="90"
                     rows="3"
                     name="descripcion"
                     value={this.state.descripcion}
                     onChange={(e) => this.handleChange(e)}
                   ></textarea>
                   <small className="form-text text-muted">
-                    Introduce una descripcion de tu producto
+                    Introduce una descripcion de tu producto (máximo 90 caracteres)
                 </small>
                 </div>
                 <div className="form-group">

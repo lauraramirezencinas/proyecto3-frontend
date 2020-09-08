@@ -33,7 +33,8 @@ class ProductsGrid extends Component {
 
                 })
             } else {
-                axios.get('http://localhost:3000/producto/all/')
+                
+                axios.get('http://localhost:3000/producto/all/'+"?time="+new Date().valueOf())
                     .then(response => {
                         console.log("prodcut", response.data)
                         this.setState({ productos: response.data })

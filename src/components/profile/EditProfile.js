@@ -65,6 +65,14 @@ export class EditProfile extends Component {
                                 value={this.state.nombre}
                                 onChange={(e) => this.handleChange(e)}
                             />
+                            <input
+                                type="hidden"
+                                className="form-control"
+                                placeholder=""
+                                name="logoUrl"
+                                value={this.state.logoUrl}
+                                onChange={(e) => this.handleChange(e)}
+                            />
                         </div>
                         <div className="form-group">
                             <label>Apellido</label>

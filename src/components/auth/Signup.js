@@ -133,7 +133,7 @@ export class Signup extends Component {
             </div>
             <button className="btn boton-form" type="submit">Registrame</button>
             {message}
-            <div className="mt-30">
+            <div className="mt-30 mb-50">
               <p className="extra-form">¿Ya tienes una cuenta?</p>
               <Link className="extra-form" to={"/login"}> Login</Link>
             </div>

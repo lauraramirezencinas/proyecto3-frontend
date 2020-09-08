@@ -14,24 +14,25 @@ export class Busqueda extends Component {
         super(props)
         this.state={
             search: "",
-
         }
     }
 
-    handleChange = (e) => {
-        this.setState({ search: e.target.value })
-        this.updateIt()
+    handleChange = async (e) => {
+        console.log("HANDLE" + e.target.value )
+         await this.setState({ search: e.target.value })
+        console.log("state",this.state.search)
+        this.updateIt()      
     }
 
-    updateIt(){
-        axios.get('http://localhost:3000/producto/all/?search=' + this.state.search)
-            .then(resp => {               
+    updateIt()  {
+        console.log("UPDATEIT" + this.state.search )
+        axios.get('http://localhost:3000/producto/all/?search=' + this.state.search + "&time="+new Date().valueOf())
+            .then(resp => {             
+                console.log(resp.data.length)  
                 this.props.changeProducts(resp.data)
             })
     }
     
-  
-
 
     render() {
         return (
