@@ -10,6 +10,7 @@ export class Login extends Component {
       email: "",
       password: "",
       redirect: false,
+      message:"",
     };
     this.service = new AuthService();
   }
@@ -34,7 +35,8 @@ export class Login extends Component {
         });
         console.log(response);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {console.log(error.response.data.message)
+      this.setState({message:error.response.data.message})});
   };
   renderRedirect = () => {
     if (this.state.redirect === true) {
@@ -43,6 +45,13 @@ export class Login extends Component {
   };
 
   render() {
+    let message = ""
+    if (this.state.message) {
+      message =
+        <small className="form-text text-muted">
+          {this.state.message}
+        </small>
+    }
     return (
       <div className="container mt-80">
         <div className="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3">
@@ -75,7 +84,7 @@ export class Login extends Component {
             <button class="btn boton-form" type="submit">
               Log in
           </button>
-
+            {message}
             <div className="mt-30">
               <p className="extra-form">¿No tienes una cuenta?</p>
               <Link xlassName="extra-form" to={"/signup"}> Registrate</Link>

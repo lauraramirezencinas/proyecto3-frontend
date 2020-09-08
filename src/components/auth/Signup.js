@@ -38,7 +38,8 @@ export class Signup extends Component {
           redirect: true,
         });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {console.log(error.response.data.message)
+        this.setState({message:error.response.data.message})});;
   };
 
   renderRedirect = () => {
@@ -51,6 +52,13 @@ export class Signup extends Component {
   };
 
   render() {
+    let message = ""
+    if (this.state.message) {
+      message =
+        <small className="form-text text-muted">
+          {this.state.message}
+        </small>
+    }
     return (      
         <div className="container mt-80">
           <div className="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3">
@@ -124,6 +132,7 @@ export class Signup extends Component {
               </label>
             </div>
             <button className="btn boton-form" type="submit">Registrame</button>
+            {message}
             <div className="mt-30">
               <p className="extra-form">¿Ya tienes una cuenta?</p>
               <Link className="extra-form" to={"/login"}> Login</Link>

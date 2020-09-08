@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Button } from "react-bootstrap";
-import AddProducto from '../productos/AddProducto';
 import ProductsGrid from '../productos/ProductsGrid';
 import Bakery from '../bakerys/Bakery';
+import AddProducto from '../productos/addProducto';
 
-export default function Profile(props) {
+ function Profile(props) {
 
     const [modalShow, setModalShow] = useState(false);
     let loggedInUser = JSON.parse(localStorage.getItem("user"));
@@ -28,5 +28,5 @@ export default function Profile(props) {
     )
 }
 
-
+export default Profile
 

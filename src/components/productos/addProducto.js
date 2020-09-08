@@ -4,6 +4,7 @@ import { Modal } from "react-bootstrap";
 import UploadImage from "./UploadImage";
 
 export class AddProducto extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
