@@ -411,7 +411,11 @@ cursor: pointer;
 
  .footer{
    height: 100px;
-   background-color:#2D2D2D ;
+   background-color:#2D2D2D ;  
+  position: absolute;
+   bottom: 0;
+   left: 0;
+   right: 0;
   
   
  }

@@ -38,18 +38,23 @@ class ProductCard extends Component {
         })
     }
 
-    increment=()=> {
-        this.setState({
+    increment=async()=> {
+        await this.setState({
             count: this.state.count + 1
         });
+
+        this.props.modifyItem(this.props.producto._id, this.state.count)
     };
 
 
-    decrement=()=> {
-        this.setState({
+    decrement= async ()=> {
+        await this.setState({
             count:this.state.count - 1
         });
+        this.props.modifyItem(this.props.producto._id, this.state.count)
     };
+
+
 
     deleteProduct = () => {
         axios.delete(`http://localhost:3000/producto/${this.props.producto._id}`)
