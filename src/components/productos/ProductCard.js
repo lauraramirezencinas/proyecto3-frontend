@@ -38,7 +38,7 @@ class ProductCard extends Component {
         })
     }
 
-    increment=async()=> {
+    increment = async () => {
         await this.setState({
             count: this.state.count + 1
         });
@@ -47,9 +47,9 @@ class ProductCard extends Component {
     };
 
 
-    decrement= async ()=> {
+    decrement = async () => {
         await this.setState({
-            count:this.state.count - 1
+            count: this.state.count - 1
         });
         this.props.modifyItem(this.props.producto._id, this.state.count)
     };
@@ -120,11 +120,18 @@ class ProductCard extends Component {
                             <p className="ingredients-card">{this.props.producto.ingredientes}</p>
                         </Card.Text>
                     </div>
-                    <div class="row">                       
-                        <button className='dec' onClick={this.decrement}>-</button>
-                        <h2>{this.state.count}</h2>
-                        <button className='inc' onClick={this.increment}>+</button>
-                        <Button className="boton-editar" variant="primary">Agregar</Button>
+                    <div class="row">
+                        <div className="col">
+                            <div className="row counter">
+                                <button className='inc' onClick={this.decrement}>-</button>
+                                <p className="count">{this.state.count}</p>
+                                <button className='inc' onClick={this.increment}>+</button>
+                            </div>
+
+                        </div>
+                        <div className="col">
+                            <Button className="agregar" variant="primary">Agregar</Button>
+                        </div>
                     </div>
 
 

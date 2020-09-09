@@ -7,40 +7,54 @@ import Pedido from './pedidos/Pedido'
 
 
 export class Tienda extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
-            user:null, 
-            pedido:{}
+            user: null,
+            pedido: {}
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         axios.get('http://localhost:3000/usuario/' + this.props.match.params.id, { withCredentials: true })
-                .then(response => {
-                    this.setState({ user: response.data })
-    
-                })
+            .then(response => {
+                this.setState({ user: response.data })
+
+            })
     }
 
-    modifyItem=(itemId, quantity)=>{
+    modifyItem = (itemId, quantity) => {
         let pedido = this.state.pedido
         pedido[itemId] = quantity
         this.setState({
-            pedido:pedido
+            pedido: pedido
         })
-        
+        console.log(pedido)
+
     }
 
     render() {
-        console.log(this.props)
+        
+        let pedido = ""
+        if (Object.keys(this.state.pedido).length===0) {
+            pedido=""
+        }else{
+            pedido =
+                <div className="pedido">
+                    <div className="container">
+                        <Pedido pedido={this.state.pedido} />
+                    </div>
+                </div>
+        }
+
         return (
-            <div className="container">
-                <h1 className="mt-30 perfil">Tienda</h1>
-                 <Bakery user={this.state.user} /> 
-                 <ProductsGrid userId={this.props.match.params.id} modifyItem={this.modifyItem}/> 
-                 <Pedido pedido={this.state.pedido} />
-                
+            <div>
+                <div className="container">
+                    <h1 className="mt-30 perfil">Tienda</h1>
+                    <Bakery user={this.state.user} />
+                    <ProductsGrid userId={this.props.match.params.id} modifyItem={this.modifyItem} />
+                </div>
+                {pedido}
             </div>
         )
     }

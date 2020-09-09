@@ -297,6 +297,34 @@ a {
 }
 
 
+.inc{
+  height: 35px;
+  border: 2px solid #E32283;
+  border-radius: 31%;
+  color: #E32283;
+  background-color: white;
+}
+.count{
+  font-size: 20px;
+  padding-left: 8px;
+  padding-right: 8px;
+
+}
+
+.counter{
+  margin-left: 120px!important;
+  
+}
+
+.agregar{
+  margin-bottom: 20px;
+  color:#E32283 !important;
+  background-color: white!important;
+  border: 2px solid  #E32283!important;
+  cursor: pointer;
+  width: 110px;
+}
+
   /* PROFILE */
 .perfil{
   font-family: 'Montserrat', sans-serif;
@@ -338,6 +366,49 @@ cursor: pointer;
   }
 
 
+/* Pedido */
+.pedido{
+  background-color: #E32283;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.tit-pedido{
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 35px;
+}
+
+.btn-tramitar{
+  background-color: white!important;
+  height: 50px;
+  
+  display: flex;
+  border:solid 1px #E32283!important;
+  color:#E32283!important;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+
+}
+
+.articulo{
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+}
+
+.precioTotal{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  color: white;
+}
+.total{
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
 @media (min-width: 576px) { 
   
 .card-columns {
@@ -352,6 +423,35 @@ cursor: pointer;
   .img-productCard{
     height: 200px;
   }
+
+.inc{
+  height: 35px!important ;
+  border: 2px solid #E32283;
+  border-radius: 31%;
+  color: #E32283;
+  background-color: white;
+}
+.count{
+  font-size: 20px;
+  padding-left: 8px;
+  padding-right: 8px;
+
+}
+
+.counter{
+  margin-left: 25px!important;
+  margin-top: 6px;
+}
+
+.agregar{
+  margin-bottom: 20px;
+  color:#E32283 !important;
+  background-color: white!important;
+  border: 2px solid  #E32283!important;
+  cursor: pointer;
+  width: 90px;
+}
+
 }
 
 @media (min-width: 768px) { 
@@ -412,7 +512,6 @@ cursor: pointer;
  .footer{
    height: 100px;
    background-color:#2D2D2D ;  
-  position: absolute;
    bottom: 0;
    left: 0;
    right: 0;
