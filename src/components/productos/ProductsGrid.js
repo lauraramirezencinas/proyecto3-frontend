@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Card, Button } from "react-bootstrap";
 import ProductCard from "./ProductCard";
-import Busqueda from "../Busqueda";
+
 
 class ProductsGrid extends Component {
 

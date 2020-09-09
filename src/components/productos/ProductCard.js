@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Card, Button } from "react-bootstrap";
 //import {useHistory } from "react-router-dom";
-import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
+import { Image, CloudinaryContext } from 'cloudinary-react';
 import EditProducto from "./EditProducto";
 import axios from "axios";
 
@@ -75,7 +75,7 @@ class ProductCard extends Component {
                 <Card.Body className="productCard">
                     {/* <Card.Img className="img-productCard" variant="top" src={this.props.producto.imagenUrl} /> */}
                     <CloudinaryContext cloudName="dry1b4yex">
-                        <Image className="img-cloudy" publicId={this.props.producto.imageName} height="200" width="350" crop="fill" />
+                        <Image className="img-cloudy" publicId={this.props.producto.imageName} height="200" width="350" crop="fill" alt="producto" />
                     </CloudinaryContext>
                     <div className="container">
                         <div className="row card-row">
@@ -103,7 +103,7 @@ class ProductCard extends Component {
                 <Card.Body className="productCard card-clik">
                     {/* <Card.Img className="img-productCard" variant="top" src={this.props.producto.imagenUrl} /> */}
                     <CloudinaryContext cloudName="dry1b4yex">
-                        <Image className="img-cloudy" publicId={this.props.producto.imageName} height="200" width="350" crop="fill" />
+                        <Image className="img-cloudy" publicId={this.props.producto.imageName} height="200" width="350" crop="fill" alt="producto" />
                     </CloudinaryContext>
                     <div className="container ">
                         <div className="row card-row">
@@ -144,7 +144,7 @@ class ProductCard extends Component {
                 <Card.Body className="productCard card-clik" onClick={this.handleClick}>
                     {/* <Card.Img className="img-productCard" variant="top" src={this.props.producto.imagenUrl} /> */}
                     <CloudinaryContext cloudName="dry1b4yex">
-                        <Image className="img-cloudy" publicId={this.props.producto.imageName} height="200" width="350" crop="fill" />
+                        <Image className="img-cloudy" publicId={this.props.producto.imageName} height="200" width="350" crop="fill" alt="producto" />
                     </CloudinaryContext>
                     <div className="container ">
                         <div className="row card-row">
@@ -162,14 +162,14 @@ class ProductCard extends Component {
                         </Card.Text>
                         <div className="row mt-30 mb-30">
                             <div className="col-3">
-                                <img src={this.props.producto.idUsuario.logoUrl} className="img-card rounded-circle" />
+                                <img src={this.props.producto.idUsuario.logoUrl} className="img-card rounded-circle" alt="logo"/>
                             </div>
                             <div className="col-6 col-logo">
                                 <p className="baker-card baker-name">{this.props.producto.idUsuario.nombreNegocio}</p>
                                 <p className="baker-card">{this.props.producto.idUsuario.direccion.ciudad}</p>
                             </div>
                             <div className="col-3">
-                                <img src="../images/tienda.png" className="img-tienda" />
+                                <img src="../images/tienda.png" className="img-tienda" alt="tienda"/>
                             </div>
 
                         </div>

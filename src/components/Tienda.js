@@ -3,6 +3,7 @@ import Bakery from './bakerys/Bakery'
 import axios from 'axios'
 import ProductsGrid from './productos/ProductsGrid'
 import Pedido from './pedidos/Pedido'
+import FinalPedido from './pedidos/FinalPedido'
 
 
 
@@ -11,7 +12,8 @@ export class Tienda extends Component {
         super(props)
         this.state = {
             user: null,
-            pedido: {}
+            pedido: {}, 
+
         }
     }
 
@@ -33,6 +35,7 @@ export class Tienda extends Component {
 
     }
 
+
     render() {
         
         let pedido = ""
@@ -42,7 +45,7 @@ export class Tienda extends Component {
             pedido =
                 <div className="pedido">
                     <div className="container">
-                        <Pedido pedido={this.state.pedido} />
+                        <Pedido pedido={this.state.pedido} ordenFinalizada={this.ordenFinalizada} />
                     </div>
                 </div>
         }

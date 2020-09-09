@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Modal } from "react-bootstrap";
 import axios from 'axios';
+import FinalPedido from './FinalPedido';
 
-export class FinPedido extends Component {
+export class TramitarPedido extends Component {
 
     constructor(props) {
         super(props)
@@ -10,6 +11,7 @@ export class FinPedido extends Component {
             nombre: "",
             telefono: "",
             email: "",
+            infoPedido:{}
         }
     }
 
@@ -18,22 +20,43 @@ export class FinPedido extends Component {
         this.setState({ [name]: value });
     };
 
+
+
     handleFormSubmit = (event) => {
         event.preventDefault();
+        let newItems = [];
+        for (let i = 0; i < this.props.items.length; ++i) {
+            let newitem = {
+                nombre: this.props.items[i].producto.nombre,
+                precio: this.props.items[i].producto.precio,
+                cantidad: this.props.items[i].qte,
+            }
+            newItems.push(newitem)
+            console.log(newItems)
+        }
+
+
         const { nombre, telefono, email } = this.state
-        const idUsuario= this.props.items[0].producto._id; 
+        const idUsuario = this.props.items[0].producto._id;
         const data = {
-            idUsuario:idUsuario,
-            items: this.props.items,
+            idUsuario: idUsuario,
+            items: newItems,
             nombre: nombre,
             telefono: telefono,
             email: email
 
         }
-
         axios.post("http://localhost:3000/pedido/", data, { withCredentials: true })
-
-
+            .then(response => {
+                this.setState({
+                    nombre: "",
+                    telefono: "",
+                    email: "",
+                })
+                let url = "/pedido/"
+                window.location.href = url;
+            })
+            .catch(error => console.log(error))
     }
 
     render() {
@@ -103,7 +126,6 @@ export class FinPedido extends Component {
                                 Pedir
                         </button>
                         </Modal.Footer>
-
                     </form>
                 </div>
             </Modal>
@@ -111,4 +133,4 @@ export class FinPedido extends Component {
     }
 }
 
-export default FinPedido
+export default TramitarPedido

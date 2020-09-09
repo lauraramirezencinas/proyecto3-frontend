@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Articulo from './Articulo';
 import { Button } from "react-bootstrap";
-import FinPedido from './FinPedido';
+import TramitarPedido from './TramitarPedido';
+
+
 
 export class Pedido extends Component {
 
@@ -9,7 +11,7 @@ export class Pedido extends Component {
         super(props)
         this.state = {
             modalOpen: false,
-            items: []
+            items: [], 
         }
     }
 
@@ -31,7 +33,7 @@ export class Pedido extends Component {
             qte:qte
         }
         let found = false;
-        for (var i=0;i<this.state.items.length && !found;++i){
+        for (let i=0;i<this.state.items.length && !found;++i){
             let itemi = this.state.items[i];
             if (itemi.producto._id == producto._id){
                 found = true;
@@ -43,9 +45,14 @@ export class Pedido extends Component {
             this.state.items.push(item);
         }
         console.log("items", this.state.items)
+    
     }
 
+   
+    
+
     render() {
+        
         let pedidos = []
         for (let key in this.props.pedido) {
             if (this.props.pedido.hasOwnProperty(key)) {
@@ -54,6 +61,7 @@ export class Pedido extends Component {
                     quantity: this.props.pedido[key]
                 })
             }
+            
         }
 
         let items = pedidos.map((producto) =>
@@ -80,7 +88,8 @@ export class Pedido extends Component {
 
                 </div>
 
-                <FinPedido show={this.state.modalOpen} onHide={() => this.closeModal()} items={this.state.items}telefono/>
+                <TramitarPedido show={this.state.modalOpen} onHide={() => this.closeModal() } 
+                items={this.state.items} />
             </div>
         )
     }

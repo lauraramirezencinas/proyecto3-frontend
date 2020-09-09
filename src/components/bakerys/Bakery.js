@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from "react-bootstrap";
 import EditProfile from '../profile/EditProfile';
-import axios from "axios";
+
 
 export class Bakery extends Component {
 
@@ -66,7 +66,7 @@ export class Bakery extends Component {
                 bakery =
                     <>
                         <div className="col-xs-12 col-md-4 mt-20">
-                            <img src={this.props.user.logoUrl} className="img-perfil rounded-circle" />
+                            <img src={this.props.user.logoUrl} className="img-perfil rounded-circle" alt="logo" />
                         </div>
                         {/* <div className="col-xs-12 col-md-4 mt-20">
                             <p className="bak-campos">NOMBRE:  <span className="bak-val">{this.state.nombre}</span></p>
@@ -97,7 +97,7 @@ export class Bakery extends Component {
                 bakery =
                     <>
                         <div className="col-xs-12 col-md-4 mt-20">
-                            <img src={this.props.user.logoUrl} className="img-perfil rounded-circle" />
+                            <img src={this.props.user.logoUrl} className="img-perfil rounded-circle" alt="logo" />
                         </div>
                         <div className="col-xs-12 col-md-4 mt-20">
                             <p className="bak-campos">NOMBRE:  <span className="bak-val">{this.props.user.nombreNegocio}</span></p>
