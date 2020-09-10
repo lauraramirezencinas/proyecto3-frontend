@@ -11,7 +11,7 @@ export class Pedido extends Component {
         super(props)
         this.state = {
             modalOpen: false,
-            items: [], 
+            items: [],
         }
     }
 
@@ -27,51 +27,29 @@ export class Pedido extends Component {
         })
     }
 
-    totalPedido = (producto, qte)=> {
-        let item ={
-            producto:producto,
-            qte:qte
-        }
-        let found = false;
-        for (let i=0;i<this.state.items.length && !found;++i){
-            let itemi = this.state.items[i];
-            if (itemi.producto._id == producto._id){
-                found = true;
-                this.state.items[i].qte=qte;
-                this.state.items[i].producto=producto;
-            }
-        }
-        if (!found && producto._id){
-            this.state.items.push(item);
-        }
-        console.log("items", this.state.items)
-    
-    }
-
-   
-    
-
     render() {
-        
+
         let pedidos = []
+        let total = 0;
         for (let key in this.props.pedido) {
             if (this.props.pedido.hasOwnProperty(key)) {
+                total += this.props.pedido[key]["precio"] *this.props.pedido[key]["quantity"]
                 pedidos.push({
                     producto_id: key,
-                    quantity: this.props.pedido[key]
+                    quantity: this.props.pedido[key]["quantity"],
+                    precio: this.props.pedido[key]["precio"],
+                    nombre: this.props.pedido[key]["nombre"], 
+                    idUsuario: this.props.pedido[key]["idUsuario"]
                 })
             }
-            
+
         }
 
         let items = pedidos.map((producto) =>
-            <Articulo key={producto.producto_id} id={producto.producto_id} qte={producto.quantity} totalpedido={this.totalPedido} />)
+            <Articulo key={producto.producto_id} id={producto.producto_id} prod={producto}  />)
 
-        let total= this.state.items.map(item=>{ 
+        console.log("pedidos", pedidos)
 
-        })
-        
-        
         return (
             <div>
                 <h1 className="tit-pedido">Pedido</h1>
@@ -88,8 +66,9 @@ export class Pedido extends Component {
 
                 </div>
 
-                <TramitarPedido show={this.state.modalOpen} onHide={() => this.closeModal() } 
-                items={this.state.items} />
+                <TramitarPedido show={this.state.modalOpen} onHide={() => this.closeModal()}
+                    pedidos={pedidos} precioFinal={total} />
+ 
             </div>
         )
     }

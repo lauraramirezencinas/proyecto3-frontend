@@ -11,7 +11,7 @@ import AddProducto from '../productos/addProducto';
     console.log("loggedInUser", loggedInUser)
     const editable = true;
 
- 
+   
 
     return (
         <div className="container mt-30">
@@ -22,7 +22,8 @@ import AddProducto from '../productos/addProducto';
                     Añadir producto
             </Button>
             </div>
-            <AddProducto show={modalShow} onHide={() => setModalShow(false)} user={loggedInUser} />
+            <AddProducto show={modalShow} onHide={() => setModalShow(false)} 
+            user={loggedInUser} />
             <ProductsGrid editable={editable} profile={loggedInUser} />
         </div>
     )

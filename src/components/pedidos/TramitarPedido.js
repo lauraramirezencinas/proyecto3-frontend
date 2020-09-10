@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Modal } from "react-bootstrap";
 import axios from 'axios';
-import FinalPedido from './FinalPedido';
+
 
 export class TramitarPedido extends Component {
 
@@ -25,25 +25,27 @@ export class TramitarPedido extends Component {
     handleFormSubmit = (event) => {
         event.preventDefault();
         let newItems = [];
-        for (let i = 0; i < this.props.items.length; ++i) {
+        for (let i = 0; i < this.props.pedidos.length; ++i) {
             let newitem = {
-                nombre: this.props.items[i].producto.nombre,
-                precio: this.props.items[i].producto.precio,
-                cantidad: this.props.items[i].qte,
+                nombre: this.props.pedidos[i].nombre,
+                precio: this.props.pedidos[i].precio,
+                cantidad: this.props.pedidos[i].quantity,
             }
             newItems.push(newitem)
             console.log(newItems)
         }
 
 
-        const { nombre, telefono, email } = this.state
-        const idUsuario = this.props.items[0].producto._id;
+        const { nombre, telefono, email } = this.state;
+        const precioFinal=this.props.precioFinal;
+        const idUsuario = this.props.pedidos[0].idUsuario;
         const data = {
             idUsuario: idUsuario,
             items: newItems,
             nombre: nombre,
             telefono: telefono,
-            email: email
+            email: email, 
+            precioTotal: precioFinal
 
         }
         axios.post("http://localhost:3000/pedido/", data, { withCredentials: true })
@@ -53,7 +55,8 @@ export class TramitarPedido extends Component {
                     telefono: "",
                     email: "",
                 })
-                let url = "/pedido/"
+                let id= response.data._id
+                let url = "/pedido/"+ id 
                 window.location.href = url;
             })
             .catch(error => console.log(error))

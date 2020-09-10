@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import Bakery from './bakerys/Bakery'
 import axios from 'axios'
 import ProductsGrid from './productos/ProductsGrid'
-import Pedido from './pedidos/Pedido'
-import FinalPedido from './pedidos/FinalPedido'
+import Pedido from './pedidos/Pedido';
 
 
 
@@ -25,9 +24,14 @@ export class Tienda extends Component {
             })
     }
 
-    modifyItem = (itemId, quantity) => {
+    modifyItem = (itemId, quantity, precio, nombre, idUsuario) => {
         let pedido = this.state.pedido
-        pedido[itemId] = quantity
+        pedido[itemId] = {
+            quantity:quantity,
+            precio:precio,
+            nombre:nombre,
+            idUsuario:idUsuario
+        }
         this.setState({
             pedido: pedido
         })
@@ -52,7 +56,7 @@ export class Tienda extends Component {
 
         return (
             <div>
-                <div className="container">
+                <div className="container tienda">
                     <h1 className="mt-30 perfil">Tienda</h1>
                     <Bakery user={this.state.user} />
                     <ProductsGrid userId={this.props.match.params.id} modifyItem={this.modifyItem} />

@@ -298,21 +298,22 @@ a {
 
 
 .inc{
-  height: 35px;
+  height: 41px;
   border: 2px solid #E32283;
   border-radius: 31%;
   color: #E32283;
   background-color: white;
+  width: 41px;
 }
 .count{
-  font-size: 20px;
+  font-size: 27px;
   padding-left: 8px;
   padding-right: 8px;
 
 }
 
 .counter{
-  margin-left: 120px!important;
+  margin-left: 155px!important;
   
 }
 
@@ -409,6 +410,11 @@ cursor: pointer;
   margin-bottom: 20px;
   margin-top: 20px;
 }
+
+.tienda{
+  padding-bottom: 110px;
+}
+
 @media (min-width: 576px) { 
   
 .card-columns {
@@ -432,14 +438,14 @@ cursor: pointer;
   background-color: white;
 }
 .count{
-  font-size: 20px;
+  font-size: 22px;
   padding-left: 8px;
   padding-right: 8px;
 
 }
 
 .counter{
-  margin-left: 25px!important;
+  margin-left: 55px!important;
   margin-top: 6px;
 }
 
@@ -475,6 +481,11 @@ cursor: pointer;
     .img-productCard{
       height: 200px;
     }
+
+    .counter{
+      margin-left: 103px!important;
+      margin-top: 6px;
+    }
    
  }
 
@@ -488,6 +499,11 @@ cursor: pointer;
     .img-productCard{
       height: 200px;
     }
+    .counter{
+      margin-left: 80px!important;
+      margin-top: 6px;
+    }
+   
     
  }
 
@@ -503,6 +519,11 @@ cursor: pointer;
     }
     .img-productCard{
       height: 200px;
+    }
+
+    .counter{
+      margin-left: 70px!important;
+      margin-top: 6px;
     }
 }
 

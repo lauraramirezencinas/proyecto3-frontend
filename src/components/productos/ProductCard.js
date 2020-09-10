@@ -43,7 +43,7 @@ class ProductCard extends Component {
             count: this.state.count + 1
         });
 
-        this.props.modifyItem(this.props.producto._id, this.state.count)
+        this.props.modifyItem(this.props.producto._id, this.state.count,this.props.producto.precio, this.props.producto.nombre,this.props.producto.idUsuario._id)
     };
 
 
@@ -51,7 +51,7 @@ class ProductCard extends Component {
         await this.setState({
             count: this.state.count - 1
         });
-        this.props.modifyItem(this.props.producto._id, this.state.count)
+        this.props.modifyItem(this.props.producto._id, this.state.count,this.props.producto.precio, this.props.producto.nombre,this.props.producto.idUsuario._id)
     };
 
 
@@ -120,22 +120,12 @@ class ProductCard extends Component {
                             <p className="ingredients-card">{this.props.producto.ingredientes}</p>
                         </Card.Text>
                     </div>
-                    <div class="row">
-                        <div className="col">
-                            <div className="row counter">
-                                <button className='inc' onClick={this.decrement}>-</button>
-                                <p className="count">{this.state.count}</p>
-                                <button className='inc' onClick={this.increment}>+</button>
-                            </div>
-
+                    
+                        <div className="row counter">
+                            <button className='inc' onClick={this.decrement}>-</button>
+                            <p className="count">{this.state.count}</p>
+                            <button className='inc' onClick={this.increment}>+</button>
                         </div>
-                        <div className="col">
-                            <Button className="agregar" variant="primary">Agregar</Button>
-                        </div>
-                    </div>
-
-
-
                 </Card.Body>
             </>
         }
@@ -162,14 +152,14 @@ class ProductCard extends Component {
                         </Card.Text>
                         <div className="row mt-30 mb-30">
                             <div className="col-3">
-                                <img src={this.props.producto.idUsuario.logoUrl} className="img-card rounded-circle" alt="logo"/>
+                                <img src={this.props.producto.idUsuario.logoUrl} className="img-card rounded-circle" alt="logo" />
                             </div>
                             <div className="col-6 col-logo">
                                 <p className="baker-card baker-name">{this.props.producto.idUsuario.nombreNegocio}</p>
                                 <p className="baker-card">{this.props.producto.idUsuario.direccion.ciudad}</p>
                             </div>
                             <div className="col-3">
-                                <img src="../images/tienda.png" className="img-tienda" alt="tienda"/>
+                                <img src="../images/tienda.png" className="img-tienda" alt="tienda" />
                             </div>
 
                         </div>
