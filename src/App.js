@@ -11,7 +11,6 @@ import Profile from './components/profile/Profile';
 import FormBaker from './components/auth/FormBaker';
 import Home from './components/Home';
 import Tienda from './components/Tienda';
-import Footer from './components/Footer';
 import FinalPedido from './components/pedidos/FinalPedido';
 import HojaPedidoBaker from './components/bakerys/HojaPedidoBaker';
 
@@ -58,7 +57,7 @@ class App extends Component {
           <Route  exact path="/baker/:id" component={Tienda}/>
           <Route exact path="/pedido/:id" component={FinalPedido}/>
         </Switch>
-        <Footer />
+        
       </div>
     );
   }

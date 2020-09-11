@@ -23,12 +23,14 @@ export class FinalPedido extends Component {
     render() {
         
         return (
-            <div>
-                <h1>
-                Gracias por tu compra {this.state.pedido.nombre}
+            <div className="container fin-pedido">
+                
+                Gracias {this.state.pedido.nombre} por realizar tu pedido.
                 <br></br>
-                Tu pedido es el numero {this.state.pedido.numeroPedido}
-                </h1>
+                Tu pedido es el numero <b>{this.state.pedido.numeroPedido}</b>.
+                <br></br>
+                Lo podras recoger en {this.state.pedido.recogida}.
+                
                 
             </div>
         )
