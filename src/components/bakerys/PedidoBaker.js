@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { ButtonGroup, ToggleButton } from "react-bootstrap";
+import Item from './Item';
 
 export class Pedido extends Component {
     constructor(props) {
@@ -40,7 +41,7 @@ export class Pedido extends Component {
         const pintarLista = listaStatus.map((status, idx) =>
             <ToggleButton
                 key={idx}
-                className="toggle"
+                className="toggle "
                 type="radio"
                 variant="secondary"
                 name="status"
@@ -52,41 +53,23 @@ export class Pedido extends Component {
             </ToggleButton>
         )
 
+        
+        const detallePedido= this.props.pedido.items.map(infoPedido=>
+           <Item infoPedido={infoPedido} />)
+
         return (
-            <div className="container">
-                <p>Pedido Numero {this.props.pedido.numeroPedido} Estado:{this.state.status} </p>
-                
+            <div className="pedido-baker">
+            <div className="container  mb-50 mt-30">
+                <p className="numero-pedido">Pedido Numero {this.props.pedido.numeroPedido} </p>
+                <p className="detalles">Detalles del pedido:</p>
+                 {detallePedido} 
+                 <p className="precio-total">Total:{this.props.pedido.precioTotal}€</p>
+                 <p> Estado:{this.state.status}</p>
                 <ButtonGroup vertical toggle>                
                 {pintarLista}
                 </ButtonGroup>
-                
-
-
-
-
-
-
-                {/* <form onSubmit={this.handleFormSubmit}> 
-                    <div class="form-group">
-                        <div className="row">
-                            <div className="col">
-                                <label class="mr-sm-2">Estado:{this.props.pedido.status} </label>
-                            </div>
-                            <div className="col">
-                                <select class="custom-select mr-sm-2" name="status"
-                                    value={this.state.status}
-                                    onChange={(e) => this.handleChange(e)} >
-                                    <option value={this.state.status} >{this.props.pedido.status}</option>
-                                    <option value="EnPreparacion">En Preparacion</option>
-                                    <option value="Finalizado">Finalizado</option>
-                                    <option value="Recogido">Recogido</option>
-                                    <option value="Cancelado">Cancelado</option>
-                                </select>
-                            </div>
-                        </div>        
-                    </div>
-                    <input type="submit" value="actualizar estado"/>
-                </form> */}
+        
+            </div>
             </div>
         )
     }

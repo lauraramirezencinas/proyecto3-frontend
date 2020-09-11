@@ -23,6 +23,7 @@ export class FinalPedido extends Component {
     render() {
         
         return (
+        
             <div className="container fin-pedido">
                 
                 Gracias {this.state.pedido.nombre} por realizar tu pedido.
@@ -30,7 +31,11 @@ export class FinalPedido extends Component {
                 Tu pedido es el numero <b>{this.state.pedido.numeroPedido}</b>.
                 <br></br>
                 Lo podras recoger en {this.state.pedido.recogida}.
-                
+                <br></br>
+                <div className="div-volver">
+                <button className="volver">Volver</button>
+                </div>
+
                 
             </div>
         )

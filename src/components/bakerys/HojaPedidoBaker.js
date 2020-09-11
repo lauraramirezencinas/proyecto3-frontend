@@ -31,7 +31,7 @@ export class HojaPedidoBaker extends Component {
     
 
         return (
-            <div className="container ">
+            <div >
                 {pedidosTodos}
             </div>
 
