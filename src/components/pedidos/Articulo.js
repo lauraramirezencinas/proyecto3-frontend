@@ -11,18 +11,6 @@ export class Articulo extends Component {
         }
     }
 
-    // componentDidMount() {
-        
-    //         console.log("componentDidMount")
-    //     axios.get('http://localhost:3000/producto/' + this.props.id, { withCredentials: true })
-    //         .then(response => {
-    //             this.setState({
-    //                 producto: response.data                
-    //             })           
-    //         })
-        
-            
-    // }
 
     refresh = ()=>{
         this.props.totalpedido(this.props.nombre, this.props.qte )

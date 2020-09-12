@@ -49,7 +49,7 @@ export class TramitarPedido extends Component {
             precioTotal: precioFinal
 
         }
-        axios.post("http://localhost:3000/pedido/", data, { withCredentials: true })
+        axios.post(`${process.env.REACT_APP_API_URL}/pedido/`, data, { withCredentials: true })
             .then(response => {
                 this.setState({
                     nombre: "",

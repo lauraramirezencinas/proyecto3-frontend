@@ -40,7 +40,7 @@ export class AddProducto extends Component {
        
     axios
       .post(
-        "http://localhost:3000/producto/",producto,
+        `${process.env.REACT_APP_API_URL}/producto/`,producto,
         {headers: { 'content-type': 'multipart/form-data' }, 
         withCredentials: true}
       )

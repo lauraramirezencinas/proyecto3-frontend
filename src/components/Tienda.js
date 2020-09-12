@@ -17,7 +17,7 @@ export class Tienda extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3000/usuario/' + this.props.match.params.id, { withCredentials: true })
+        axios.get(`${process.env.REACT_APP_API_URL}/usuario/` + this.props.match.params.id, { withCredentials: true })
             .then(response => {
                 this.setState({ user: response.data })
 

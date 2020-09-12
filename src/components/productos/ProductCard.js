@@ -57,7 +57,7 @@ class ProductCard extends Component {
 
 
     deleteProduct = () => {
-        axios.delete(`http://localhost:3000/producto/${this.props.producto._id}`)
+        axios.delete(`${process.env.REACT_APP_API_URL}/producto/${this.props.producto._id}`)
             .then(() => {
                 // this.props.history.push('/profile');   
                 let url = "/profile/";
@@ -73,7 +73,6 @@ class ProductCard extends Component {
         if (this.props.editable) {
             editar = <>
                 <Card.Body className="productCard">
-                    {/* <Card.Img className="img-productCard" variant="top" src={this.props.producto.imagenUrl} /> */}
                     <CloudinaryContext cloudName="dry1b4yex">
                         <Image className="img-cloudy" publicId={this.props.producto.imageName} height="200" width="350" crop="fill" alt="producto" />
                     </CloudinaryContext>
@@ -101,7 +100,6 @@ class ProductCard extends Component {
         else if (this.props.isStore) {
             editar = <>
                 <Card.Body className="productCard card-clik">
-                    {/* <Card.Img className="img-productCard" variant="top" src={this.props.producto.imagenUrl} /> */}
                     <CloudinaryContext cloudName="dry1b4yex">
                         <Image className="img-cloudy" publicId={this.props.producto.imageName} height="200" width="350" crop="fill" alt="producto" />
                     </CloudinaryContext>
@@ -132,7 +130,6 @@ class ProductCard extends Component {
         else {
             editar = <>
                 <Card.Body className="productCard card-clik" onClick={this.handleClick}>
-                    {/* <Card.Img className="img-productCard" variant="top" src={this.props.producto.imagenUrl} /> */}
                     <CloudinaryContext cloudName="dry1b4yex">
                         <Image className="img-cloudy" publicId={this.props.producto.imageName} height="200" width="350" crop="fill" alt="producto" />
                     </CloudinaryContext>

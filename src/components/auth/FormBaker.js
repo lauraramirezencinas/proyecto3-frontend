@@ -48,7 +48,7 @@ export class FormBaker extends Component {
    
     axios
       .patch(
-        `http://localhost:3000/usuario/${loggedInUser._id}`,baker,
+        `${process.env.REACT_APP_API_URL}/usuario/${loggedInUser._id}`,baker,
         {headers: { 'content-type': 'multipart/form-data' }, 
         withCredentials: true}
       )
@@ -68,7 +68,7 @@ export class FormBaker extends Component {
 
   render() {
     return (
-      <div className="container mt-50">
+      <div className="container mt-50 mb-100">
         <div className="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3">
           <h1 className="title-form">Panderia</h1>
           <form onSubmit={this.handleFormSubmit}>

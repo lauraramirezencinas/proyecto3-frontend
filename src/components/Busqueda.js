@@ -26,7 +26,7 @@ export class Busqueda extends Component {
 
     updateIt()  {
         console.log("UPDATEIT" + this.state.search )
-        axios.get('http://localhost:3000/producto/all/?search=' + this.state.search + "&time="+new Date().valueOf())
+        axios.get(`${process.env.REACT_APP_API_URL}/producto/all/?search=`+ this.state.search + "&time="+new Date().valueOf())
             .then(resp => {             
                 console.log(resp.data.length)  
                 this.props.changeProducts(resp.data)

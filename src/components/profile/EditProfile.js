@@ -33,7 +33,7 @@ export class EditProfile extends Component {
         this.props.onHide()
         const { nombre, apellido, email, nombreNegocio, descripcion, calle, numero, ciudad,
             horario, logoUrl, facebook, instagram } = this.state;
-        axios.patch(`http://localhost:3000/usuario/${this.props.user._id}`,
+        axios.patch(`${process.env.REACT_APP_API_URL}/usuario/${this.props.user._id}`,
             {
                 nombre, apellido, email, nombreNegocio, descripcion, calle, numero, ciudad,
                 horario, logoUrl, facebook, instagram

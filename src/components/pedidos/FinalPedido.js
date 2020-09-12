@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from 'react';
+import axios from 'axios';
+import {Link} from 'react-router-dom'
+
 
 export class FinalPedido extends Component {
 
@@ -11,7 +13,7 @@ export class FinalPedido extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://localhost:3000/pedido/' + this.props.match.params.id, { withCredentials: true })
+        axios.get(`${process.env.REACT_APP_API_URL}/pedido/` + this.props.match.params.id, { withCredentials: true })
         .then(response=>{
             this.setState({
                 pedido: response.data[0]
@@ -33,7 +35,7 @@ export class FinalPedido extends Component {
                 Lo podras recoger en {this.state.pedido.recogida}.
                 <br></br>
                 <div className="div-volver">
-                <button className="volver">Volver</button>
+                <Link  className="volver"to="/">Volver</Link>
                 </div>
 
                 
