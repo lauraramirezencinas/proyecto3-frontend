@@ -13,7 +13,7 @@ export class FinalPedido extends Component {
     }
 
     componentDidMount(){
-        axios.get(`${process.env.REACT_APP_API_URL}/pedido/` + this.props.match.params.id, { withCredentials: true })
+        axios.get(`${process.env.REACT_APP_API_URL}/api/pedido/` + this.props.match.params.id, { withCredentials: true })
         .then(response=>{
             this.setState({
                 pedido: response.data[0]

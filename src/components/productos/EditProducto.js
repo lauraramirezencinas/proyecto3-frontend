@@ -23,7 +23,7 @@ export class EditProducto extends Component {
         event.preventDefault();
         this.props.onHide()
         const { nombre, descripcion, precio, ingredientes } = this.state;
-        axios.patch(`${process.env.REACT_APP_API_URL}/producto/${this.props.producto._id}`,
+        axios.patch(`${process.env.REACT_APP_API_URL}/api/producto/${this.props.producto._id}`,
         { nombre, descripcion, precio, ingredientes},{ withCredentials: true } )
         .then(res=>{
           let url = "/profile/";

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Nav, Navbar } from 'react-bootstrap'
-
+import {Link} from 'react-router-dom'
 
 export class Encabezado extends Component {
 
@@ -9,10 +9,10 @@ export class Encabezado extends Component {
         let authLink = (
             <>
                 <li className="nav-item">
-                    <Nav.Link href="/login">Login</Nav.Link>
+                    <Link to="/login">Login   </Link>
                 </li>
                 <li className="nav-item">
-                    <Nav.Link href="/signup">Sign up</Nav.Link>
+                    <Link to="/signup">Sign up</Link>
                 </li>
             </>
         )
@@ -22,13 +22,13 @@ export class Encabezado extends Component {
             authLink = (
                 <>
                     <li className="nav-item">
-                        <Nav.Link href='/profile' className="nav-link">Perfil</Nav.Link >
+                        <Link to='/profile' className="nav-link">Perfil</Link >
                     </li>
                     <li className="nav-item">
-                        <Nav.Link href='/pedidos' className="nav-link">Pedidos</Nav.Link >
+                        <Link to='/pedidos' className="nav-link">Pedidos</Link >
                     </li>
                     <li className="nav-item">
-                        <Nav.Link href='/logout' className="nav-link">Hola {this.props.user.nombre},Logout </Nav.Link >
+                        <Link to='/logout' className="nav-link">Hola {this.props.user.nombre},Logout </Link >
                     </li>
                 </>
             )

@@ -19,7 +19,7 @@ refresh() {
         this.setState({ productos: this.props.productos })
     }
     else if (this.props.profile) {
-        axios.get(`${process.env.REACT_APP_API_URL}/producto/profile/`, { withCredentials: true })
+        axios.get(`${process.env.REACT_APP_API_URL}/api/producto/profile/`, { withCredentials: true })
             .then(response => {
                 console.log("prodcut", response.data)
                 this.setState({ productos: response.data })
@@ -27,7 +27,7 @@ refresh() {
             })
     } else {
         if (this.props.userId) {
-            axios.get(`${process.env.REACT_APP_API_URL}/producto/all/?user_id=` + this.props.userId)
+            axios.get(`${process.env.REACT_APP_API_URL}/api/producto/all/?user_id=` + this.props.userId)
                 .then(response => {
                     console.log("prodcut", response.data)
                     this.setState({ productos: response.data })
@@ -35,7 +35,7 @@ refresh() {
                 })
         } else {
 
-            axios.get(`${process.env.REACT_APP_API_URL}/producto/all/`+ "?time=" + new Date().valueOf())
+            axios.get(`${process.env.REACT_APP_API_URL}/api/producto/all/`+ "?time=" + new Date().valueOf())
                 .then(response => {
                     console.log("prodcut", response.data)
                     this.setState({ productos: response.data })

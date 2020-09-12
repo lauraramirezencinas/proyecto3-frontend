@@ -57,7 +57,7 @@ class ProductCard extends Component {
 
 
     deleteProduct = () => {
-        axios.delete(`${process.env.REACT_APP_API_URL}/producto/${this.props.producto._id}`)
+        axios.delete(`${process.env.REACT_APP_API_URL}/api/producto/${this.props.producto._id}`)
             .then(() => {
                 // this.props.history.push('/profile');   
                 let url = "/profile/";

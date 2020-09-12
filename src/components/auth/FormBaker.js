@@ -48,7 +48,7 @@ export class FormBaker extends Component {
    
     axios
       .patch(
-        `${process.env.REACT_APP_API_URL}/usuario/${loggedInUser._id}`,baker,
+        `${process.env.REACT_APP_API_URL}/api/usuario/${loggedInUser._id}`,baker,
         {headers: { 'content-type': 'multipart/form-data' }, 
         withCredentials: true}
       )

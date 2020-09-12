@@ -25,7 +25,7 @@ export class HojaPedidoBaker extends Component {
 
     actualizarPedidos() {
         if(this.state.filtro){
-            axios.get(`${process.env.REACT_APP_API_URL}/pedido/all/?status=`+ this.state.filtroEstado + "&time=" + new Date().valueOf(), 
+            axios.get(`${process.env.REACT_APP_API_URL}/api/pedido/all/?status=`+ this.state.filtroEstado + "&time=" + new Date().valueOf(), 
             { withCredentials: true })
                 .then(response => {
                     console.log("pedidos", response.data)
@@ -36,7 +36,7 @@ export class HojaPedidoBaker extends Component {
                     console.log(err)
                 })
         }else{
-            axios.get(`${process.env.REACT_APP_API_URL}/pedido/all/` + "?time=" + new Date().valueOf(), { withCredentials: true })
+            axios.get(`${process.env.REACT_APP_API_URL}/api/pedido/all/` + "?time=" + new Date().valueOf(), { withCredentials: true })
                 .then(response => {
                     console.log("pedidos", response.data)
                     this.setState({ pedidos: response.data })

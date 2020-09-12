@@ -20,7 +20,7 @@ export class Pedido extends Component {
     handleFormSubmit = async (event) => {
         event.preventDefault();
         const status = this.state.status
-        axios.patch(`${process.env.REACT_APP_API_URL}/pedido/${this.props.pedido._id}`,
+        axios.patch(`${process.env.REACT_APP_API_URL}/api/pedido/${this.props.pedido._id}`,
             { status: status }, { withCredentials: true })
             .then(res => {
                 console.log(res.data)
