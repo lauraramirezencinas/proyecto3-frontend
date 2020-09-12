@@ -499,6 +499,19 @@ font-family: 'Montserrat', sans-serif;
   margin-top: 50px;
 }
 
+.sel-status{
+  width: 80%;
+}
+
+.fecha{
+  font-family: 'Montserrat', sans-serif;
+  color:#E32283 !important;
+}
+
+.datos{
+  font-family: 'Montserrat', sans-serif;
+}
+
 @media (min-width: 576px) { 
   
 .card-columns {
