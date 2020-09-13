@@ -12,7 +12,6 @@ export class EditProfile extends Component {
             nombreNegocio: this.props.user.nombreNegocio,
             descripcion: this.props.user.descripcion,
             calleNumero: this.props.user.direccion.calleNumero,
-            ciudad: this.props.user.direccion.ciudad,
             horario: this.props.user.horario,
             logoUrl: this.props.user.logoUrl,
             facebook: this.props.user.facebook,
@@ -30,11 +29,11 @@ export class EditProfile extends Component {
     handleFormSubmit = (event) => {
         event.preventDefault();
         this.props.onHide()
-        const { nombre, apellido, email, nombreNegocio, descripcion, calleNumero, ciudad,
+        const { nombre, apellido, email, nombreNegocio, descripcion, calleNumero,
             horario, logoUrl, facebook, instagram } = this.state;
         axios.patch(`${process.env.REACT_APP_API_URL}/api/usuario/${this.props.user._id}`,
             {
-                nombre, apellido, email, nombreNegocio, descripcion, calleNumero, ciudad,
+                nombre, apellido, email, nombreNegocio, descripcion, calleNumero,
                 horario, logoUrl, facebook, instagram
             }, { withCredentials: true })
             .then(response=>{
@@ -104,17 +103,6 @@ export class EditProfile extends Component {
                                 placeholder=""
                                 name="calleNumero"
                                 value={this.state.calleNumero}
-                                onChange={(e) => this.handleChange(e)}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label className="label-form">Ciudad</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                placeholder=""
-                                name="ciudad"
-                                value={this.state.ciudad}
                                 onChange={(e) => this.handleChange(e)}
                             />
                         </div>

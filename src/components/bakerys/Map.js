@@ -9,13 +9,13 @@ export class Map extends Component {
         this.state={
             lat:"",
             lng:"",
-            calleNumero: this.props.bakery.direccion.calleNumero,
-            
+            calleNumero: this.props.bakery.direccion.calleNumero
         }
     }
 
     componentDidMount(){
-        axios.get(`${process.env.REACT_APP_API_URL}/api/maps?search=`+ this.state.calleNumero+ "&time=" + new Date().valueOf())
+        //let direccion= this.state.calleNumero.concat(this.state.cuidad)
+        axios.get(`${process.env.REACT_APP_API_URL}/api/maps?search=`+ this.state.calleNumero + "&time=" + new Date().valueOf())
         .then(response => {
             console.log("mapa",response.data)
             // volver a renderizar el mapa con CENTER = lat, lng y un PIN =  lat, lng

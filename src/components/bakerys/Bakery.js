@@ -45,7 +45,6 @@ export class Bakery extends Component {
                             <p className="bak-campos">APELLIDO:  <span className="bak-val">{this.props.user.apellido}</span></p>
                             <p className="bak-campos">EMAIL: <span className="bak-val">{this.props.user.email}</span></p>
                             <p className="bak-campos">DIRECCÓN: <span className="bak-val">{this.props.user.direccion.calleNumero} </span></p>
-                            <p className="bak-campos">CIUDAD: <span className="bak-val">{this.props.user.direccion.ciudad}</span></p>
                             <p className="bak-campos">NOMBRE DE LA PANADERIA:  <span className="bak-val">{this.props.user.nombreNegocio}</span></p>
                             <p className="bak-campos">DESCRIPCION:  <span className="bak-val">{this.props.user.descripcion}</span></p>
                             <p className="bak-campos">HORARIO:  <span className="bak-val">{this.props.user.horario}</span></p>
@@ -63,7 +62,6 @@ export class Bakery extends Component {
                             <p className="bak-campos">NOMBRE:  <span className="bak-val">{this.props.user.nombreNegocio}</span></p>
                             <p className="bak-campos">DESCRIPCION:  <span className="bak-val">{this.props.user.descripcion}</span></p>
                             <p className="bak-campos">DIRECCÓN: <span className="bak-val">{this.props.user.direccion.calleNumero} </span></p>
-                            <p className="bak-campos">CIUDAD: <span className="bak-val">{this.props.user.direccion.ciudad}</span></p>
                             <p className="bak-campos">HORARIO:  <span className="bak-val">{this.props.user.horario}</span></p>
                            <Map bakery={this.props.user}/>
                         </div>

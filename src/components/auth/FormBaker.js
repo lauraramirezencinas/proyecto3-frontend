@@ -99,24 +99,13 @@ export class FormBaker extends Component {
             </div>
             <h4 className="direccion">Dirección*</h4>
             <div className="form-group">
-              <label className="label-form">Calle y Numero</label>
+              <label className="label-form">Calle, Numero y Ciudad</label>
               <input
                 type="text"
                 className="form-control"
                 placeholder=""
                 name="calleNumero"
                 value={this.state.calleNumero}
-                onChange={(e) => this.handleChange(e)}
-              />
-            </div>
-            <div className="form-group">
-              <label className="label-form">Ciudad</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder=""
-                name="ciudad"
-                value={this.state.ciudad}
                 onChange={(e) => this.handleChange(e)}
               />
             </div>

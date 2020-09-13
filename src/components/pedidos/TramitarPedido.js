@@ -11,7 +11,7 @@ export class TramitarPedido extends Component {
             nombre: "",
             telefono: "",
             email: "",
-            recogida:""
+            recogida: ""
         }
     }
 
@@ -37,17 +37,17 @@ export class TramitarPedido extends Component {
 
 
         const { nombre, telefono, email, recogida } = this.state;
-        const precioFinal=this.props.precioFinal;
+        const precioFinal = this.props.precioFinal;
         const idUsuario = this.props.pedidos[0].idUsuario;
         const data = {
             idUsuario: idUsuario,
             items: newItems,
             nombre: nombre,
             telefono: telefono,
-            email: email, 
-            recogida:recogida,
-            precioTotal: precioFinal
-
+            email: email,
+            recogida: recogida,
+            precioTotal: precioFinal,
+            message: ""
         }
         axios.post(`${process.env.REACT_APP_API_URL}/api/pedido/`, data, { withCredentials: true })
             .then(response => {
@@ -56,14 +56,25 @@ export class TramitarPedido extends Component {
                     telefono: "",
                     email: "",
                 })
-                let id= response.data._id
-                let url = "/pedido/"+ id 
+                let id = response.data._id
+                let url = "/pedido/" + id
                 window.location.href = url;
             })
-            .catch(error => console.log(error))
+            .catch((error) => {
+                console.log(error.response.data.message)
+                this.setState({ message: error.response.data.message })
+            });;
     }
 
     render() {
+        let message = ""
+        if (this.state.message) {
+            message =
+                <small className="form-text text-muted">
+                    {this.state.message}
+                </small>
+        }
+
         return (
             <Modal {...this.props} aria-labelledby="contained-modal-title-vcenter">
                 <Modal.Header closeButton>
@@ -110,9 +121,9 @@ export class TramitarPedido extends Component {
                                     <label class="mr-sm-2">Recoger en tienda en*:  </label>
                                 </div>
                                 <div className="col">
-                                    <select class="custom-select mr-sm-2" name="recogida" 
-                                    value={this.state.recogida}
-                                    onChange={(e) => this.handleChange(e)} >
+                                    <select class="custom-select mr-sm-2" name="recogida"
+                                        value={this.state.recogida}
+                                        onChange={(e) => this.handleChange(e)} >
                                         <option value="1 hora">1 hora</option>
                                         <option value="2 horas">2 horas</option>
                                         <option value="3 horas">3 horas</option>
@@ -124,7 +135,7 @@ export class TramitarPedido extends Component {
                         <small className="form-text text-muted">
                             *Campos obligatorios
                         </small>
-
+                        {message}
                         <Modal.Footer>
                             <button className="btn boton-form" type="submit" >
                                 Pedir
