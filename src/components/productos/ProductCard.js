@@ -51,6 +51,11 @@ class ProductCard extends Component {
         await this.setState({
             count: this.state.count - 1
         });
+        if(this.state.count<0){
+            this.setState({
+                count: 0
+            });
+        }
         this.props.modifyItem(this.props.producto._id, this.state.count,this.props.producto.precio, this.props.producto.nombre,this.props.producto.idUsuario._id)
     };
 

@@ -2,7 +2,26 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { ButtonGroup, ToggleButton } from "react-bootstrap";
 import Item from './Item';
+function timeConversion(millisec) {
 
+    var seconds = (millisec / 1000).toFixed(0);
+
+    var minutes = (millisec / (1000 * 60)).toFixed(0);
+
+    var hours = (millisec / (1000 * 60 * 60)).toFixed(0);
+
+    var days = (millisec / (1000 * 60 * 60 * 24)).toFixed(0);
+
+    if (seconds < 60) {
+        return seconds + " Segundos";
+    } else if (minutes < 60) {
+        return minutes + " Min";
+    } else if (hours < 24) {
+        return hours + " Horas" +  ", " + minutes%60 + " minutos";
+    } else {
+        return days + " Días" +  ", " + hours%24 + " horas"
+    }
+}
 export class Pedido extends Component {
     constructor(props) {
         super(props)
@@ -24,8 +43,7 @@ export class Pedido extends Component {
             { status: status }, { withCredentials: true })
             .then(res => {
                 console.log(res.data)
-                let url = "/pedidos/"
-                window.location.href = url;
+             
             })
     }
 
@@ -57,6 +75,11 @@ export class Pedido extends Component {
         const detallePedido = this.props.pedido.items.map(infoPedido =>
             <Item key={infoPedido._id} infoPedido={infoPedido} />)
 
+        let date1 = Date.parse(this.props.pedido.created_at)
+        var date2 = new Date();
+        var ms = date2 - date1; // Miliseconds
+        var tiempo = timeConversion(ms);
+        
         return (
             <div className="pedido-baker">
                 <div className="container  mb-50 mt-30">
@@ -65,7 +88,7 @@ export class Pedido extends Component {
                             <p className="numero-pedido">Pedido Numero {this.props.pedido.numeroPedido} </p>
                         </div>
                         <div className="col">
-                            <p className="fecha">{this.props.pedido.created_at} </p>
+                            <p className="fecha">Hace {tiempo} </p>
                         </div>
                     </div>
 

@@ -56,7 +56,11 @@ export class HojaPedidoBaker extends Component {
 
 
     render() {
-        const pedidosTodos = this.state.pedidos.map((pedido) =>
+        
+        const pedidosOrdenados= this.state.pedidos.sort((a,b)=>
+       {return b.numeroPedido - a.numeroPedido} )
+
+        const pedidosTodos = pedidosOrdenados.map((pedido) =>
             <PedidoBaker key={pedido._id} pedido={pedido} />)
 
 
@@ -73,7 +77,7 @@ export class HojaPedidoBaker extends Component {
                                     <select class="custom-select sel-status" name="filtroEstado"
                                         value={this.state.filtroEstado}
                                         onChange={(e) => this.handleChange(e)} >
-                                        <option>Selecionar..</option>
+                                        <option value="" selected>Todos</option>
                                         <option value="Nuevo">Nuevo</option>
                                         <option value="EnPreparacion">En preparacion</option>
                                         <option value="Finalizado">Finalizado</option>
@@ -84,8 +88,8 @@ export class HojaPedidoBaker extends Component {
                             </div>
                         </div>
                     </form>
+                    
                 </div>
-
                 {pedidosTodos}
             </div>
 

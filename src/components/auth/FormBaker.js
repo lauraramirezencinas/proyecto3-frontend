@@ -9,8 +9,8 @@ export class FormBaker extends Component {
     this.state = {
       nombreNegocio: "",
       descripcion: "",
-      calle: "",
-      numero: "",
+      calleNumero: "",
+      //numero: "",
       ciudad: "",
       horario: "",
       logoUrl: "",
@@ -39,8 +39,8 @@ export class FormBaker extends Component {
     const baker = new FormData();
     baker.append('nombreNegocio', this.state.nombreNegocio);
     baker.append('descripcion', this.state.descripcion);
-    baker.append('calle', this.state.calle);
-    baker.append('numero', this.state.numero);
+    baker.append('calleNumero', this.state.calleNumero);
+    //baker.append('numero', this.state.numero);
     baker.append('ciudad', this.state.ciudad);
     baker.append('horario', this.state.horario);
     baker.append('logoUrl', this.state.logoUrl);
@@ -99,24 +99,13 @@ export class FormBaker extends Component {
             </div>
             <h4 className="direccion">Dirección*</h4>
             <div className="form-group">
-              <label className="label-form">Calle</label>
+              <label className="label-form">Calle y Numero</label>
               <input
                 type="text"
                 className="form-control"
                 placeholder=""
-                name="calle"
-                value={this.state.calle}
-                onChange={(e) => this.handleChange(e)}
-              />
-            </div>
-            <div className="form-group">
-              <label className="label-form">Numero</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder=""
-                name="numero"
-                value={this.state.numero}
+                name="calleNumero"
+                value={this.state.calleNumero}
                 onChange={(e) => this.handleChange(e)}
               />
             </div>

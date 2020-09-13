@@ -82,8 +82,12 @@ button:focus{
   margin-bottom:30px;
 }
 
+
 .mb-50{
   margin-bottom:50px;
+}
+.mb-60{
+  margin-bottom:60px;
 }
 .mb-100{
   margin-bottom:100px;
@@ -158,7 +162,7 @@ margin-bottom:25px
   background-color: #E32283!important;
   height: 50px;
   margin: auto auto;
-  display: flex;
+  /* display: flex; */
   border:solid 1px #E32283!important;
   color:white!important
 }
@@ -285,7 +289,7 @@ a {
   background-color: #E32283!important;
   height: 50px;
   margin: auto auto;
-  display: flex;
+  /* display: flex; */
   border:solid 1px #E32283!important;
   color:white!important;
   cursor: pointer;
@@ -405,8 +409,6 @@ cursor: pointer;
 .btn-tramitar{
   background-color: white!important;
   height: 50px;
-  
-  display: flex;
   border:solid 1px #E32283!important;
   color:#E32283!important;
   cursor: pointer;
@@ -516,6 +518,11 @@ font-family: 'Montserrat', sans-serif;
   font-family: 'Montserrat', sans-serif;
 }
 
+.mapa{
+  width: 350px;
+  height: 200px;
+}
+
 @media (min-width: 576px) { 
   
 .card-columns {
@@ -616,7 +623,7 @@ font-family: 'Montserrat', sans-serif;
 
 @media (min-width: 1200px) { 
   .card-columns {
-    column-count: 4 !important;
+    column-count:
     }
     .img-tienda{
       width: 47px;

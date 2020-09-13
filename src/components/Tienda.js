@@ -6,6 +6,7 @@ import Pedido from './pedidos/Pedido';
 
 
 
+
 export class Tienda extends Component {
     constructor(props) {
         super(props)
@@ -56,7 +57,7 @@ export class Tienda extends Component {
 
         return (
             <div>
-                <div className="container tienda">
+                <div className="container tienda mb-60">
                     <h1 className="mt-30 perfil">Tienda</h1>
                     <Bakery user={this.state.user} />
                     <ProductsGrid userId={this.props.match.params.id} modifyItem={this.modifyItem} />

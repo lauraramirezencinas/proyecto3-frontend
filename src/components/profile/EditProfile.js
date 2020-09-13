@@ -11,8 +11,7 @@ export class EditProfile extends Component {
             email: this.props.user.email,
             nombreNegocio: this.props.user.nombreNegocio,
             descripcion: this.props.user.descripcion,
-            calle: this.props.user.direccion.calle,
-            numero: this.props.user.direccion.numero,
+            calleNumero: this.props.user.direccion.calleNumero,
             ciudad: this.props.user.direccion.ciudad,
             horario: this.props.user.horario,
             logoUrl: this.props.user.logoUrl,
@@ -31,11 +30,11 @@ export class EditProfile extends Component {
     handleFormSubmit = (event) => {
         event.preventDefault();
         this.props.onHide()
-        const { nombre, apellido, email, nombreNegocio, descripcion, calle, numero, ciudad,
+        const { nombre, apellido, email, nombreNegocio, descripcion, calleNumero, ciudad,
             horario, logoUrl, facebook, instagram } = this.state;
         axios.patch(`${process.env.REACT_APP_API_URL}/api/usuario/${this.props.user._id}`,
             {
-                nombre, apellido, email, nombreNegocio, descripcion, calle, numero, ciudad,
+                nombre, apellido, email, nombreNegocio, descripcion, calleNumero, ciudad,
                 horario, logoUrl, facebook, instagram
             }, { withCredentials: true })
             .then(response=>{
@@ -98,24 +97,13 @@ export class EditProfile extends Component {
                         </div>
                         <h4 className="direccion">Dirección</h4>
                         <div className="form-group">
-                            <label className="label-form">Calle</label>
+                            <label className="label-form">Calle y Numero</label>
                             <input
                                 type="text"
                                 className="form-control"
                                 placeholder=""
-                                name="calle"
-                                value={this.state.calle}
-                                onChange={(e) => this.handleChange(e)}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label className="label-form">Numero</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                placeholder=""
-                                name="numero"
-                                value={this.state.numero}
+                                name="calleNumero"
+                                value={this.state.calleNumero}
                                 onChange={(e) => this.handleChange(e)}
                             />
                         </div>
