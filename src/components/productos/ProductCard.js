@@ -158,7 +158,7 @@ class ProductCard extends Component {
                             </div>
                             <div className="col-6 col-logo">
                                 <p className="baker-card baker-name">{this.props.producto.idUsuario.nombreNegocio}</p>
-                                <p className="baker-card">{this.props.producto.idUsuario.direccion.ciudad}</p>
+                                <p className="baker-card">{this.props.producto.idUsuario.horario}</p>
                             </div>
                             <div className="col-3">
                                 <img src="../images/tienda.png" className="img-tienda" alt="tienda" />

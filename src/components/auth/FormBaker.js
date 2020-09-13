@@ -99,7 +99,9 @@ export class FormBaker extends Component {
             </div>
             <h4 className="direccion">Dirección*</h4>
             <div className="form-group">
-              <label className="label-form">Calle, Numero y Ciudad</label>
+              <label className="label-form">Dirección*</label>
+              <small className="form-text text-muted">
+                Introduce Calle, Numero y Ciudad
               <input
                 type="text"
                 className="form-control"
