@@ -12,7 +12,8 @@ export class AddProducto extends Component {
       descripcion: "",
       precio: "",
       ingredientes: "",
-      imagenUrl: ""
+      imagenUrl: "", 
+      message:""
     };
   }
 
@@ -51,17 +52,28 @@ export class AddProducto extends Component {
           descripcion: "",
           precio: "",
           ingredientes: "",
-          imagenUrl:""
+          imagenUrl:"", 
+          message:""
         })
         let url = "/profile/";
         window.location.href = url;
       })
-      .catch(error => console.log(error))
+      .catch((error) => {
+        console.log(error.response.data.message)
+        this.setState({ message: error.response.data.message })
+      });
   };
 
  
 
   render() {
+    let message = ""
+    if (this.state.message) {
+      message =
+        <small className="form-text text-muted">
+          {this.state.message}
+        </small>
+    }
 
     return (
       <Modal {...this.props} aria-labelledby="contained-modal-title-vcenter">
@@ -139,6 +151,7 @@ export class AddProducto extends Component {
               <button className="btn boton-form" type="submit" >
                 Guardar
           </button>
+          {message}
             </Modal.Footer>
 
           </form>

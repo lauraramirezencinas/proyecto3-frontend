@@ -59,7 +59,7 @@ export class Pedido extends Component {
         const pintarLista = listaStatus.map((status, idx) =>
             <ToggleButton
                 key={idx}
-                className="toggle "
+                className="toggle nuevo "
                 type="radio"
                 variant="secondary"
                 name="status"

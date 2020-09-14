@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import PedidoBaker from './PedidoBaker';
+import { Alert } from 'react-bootstrap';
 
 export class HojaPedidoBaker extends Component {
 
@@ -22,23 +23,45 @@ export class HojaPedidoBaker extends Component {
         });
         this.actualizarPedidos()
     };
-
+    componentWillUnmount() {
+        this.timer = null;
+    }
     actualizarPedidos() {
-        if(this.state.filtro){
-            axios.get(`${process.env.REACT_APP_API_URL}/api/pedido/all/?status=`+ this.state.filtroEstado + "&time=" + new Date().valueOf(), 
-            { withCredentials: true })
+        if (this.state.filtro) {
+            axios.get(`${process.env.REACT_APP_API_URL}/api/pedido/all/?status=` + this.state.filtroEstado + "&time=" + new Date().valueOf(),
+                { withCredentials: true })
                 .then(response => {
-                    console.log("pedidos", response.data)
+                    let notificacion = ""
+                    let total = this.state.pedidos.length
+                    let newTotal = response.data.length
+                    if (total > 0 && total < newTotal) {
+                        //     console.log("NOTIFY NUEVO PEDIDO")
+                        // notificacion = <Alert variant='success'>
+                        //             Pedido nuevo
+                        //             </Alert>
+                        // alert("nuevoPedido")
+                        alert("Pedido nuevo")
+                    }
                     this.setState({ pedidos: response.data })
 
                 })
                 .catch(err => {
                     console.log(err)
                 })
-        }else{
+        } else {
             axios.get(`${process.env.REACT_APP_API_URL}/api/pedido/all/` + "?time=" + new Date().valueOf(), { withCredentials: true })
                 .then(response => {
-                    console.log("pedidos", response.data)
+                    let notificacion = ""
+                    let total = this.state.pedidos.length
+                    let newTotal = response.data.length
+                    if (total > 0 && total < newTotal) {
+                        console.log("NOTIFY NUEVO PEDIDO")
+                        // notificacion =
+                        //     <Alert variant='success'>
+                        //         Pedido nuevo 
+                        //     </Alert>
+                        alert("Pedido nuevo")
+                    }
                     this.setState({ pedidos: response.data })
 
                 })
@@ -48,17 +71,18 @@ export class HojaPedidoBaker extends Component {
         }
     }
 
-   
+
 
     componentDidMount() {
+        this.timer = setInterval(() => this.actualizarPedidos(), 10000);
+
         this.actualizarPedidos()
     }
 
 
     render() {
-        
-        const pedidosOrdenados= this.state.pedidos.sort((a,b)=>
-       {return b.numeroPedido - a.numeroPedido} )
+
+        const pedidosOrdenados = this.state.pedidos.sort((a, b) => { return b.numeroPedido - a.numeroPedido })
 
         const pedidosTodos = pedidosOrdenados.map((pedido) =>
             <PedidoBaker key={pedido._id} pedido={pedido} />)
@@ -88,7 +112,7 @@ export class HojaPedidoBaker extends Component {
                             </div>
                         </div>
                     </form>
-                    
+
                 </div>
                 {pedidosTodos}
             </div>

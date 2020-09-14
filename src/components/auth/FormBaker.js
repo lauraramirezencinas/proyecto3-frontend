@@ -17,6 +17,7 @@ export class FormBaker extends Component {
       facebook: "",
       instagram: "",
       redirect: false,
+      message: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -28,8 +29,8 @@ export class FormBaker extends Component {
   };
 
   handleImageChange = (file) => {
-    this.setState({logoUrl:file})
-	};
+    this.setState({ logoUrl: file })
+  };
 
   handleFormSubmit = (event) => {
     let loggedInUser = JSON.parse(localStorage.getItem("user"));
@@ -44,17 +45,23 @@ export class FormBaker extends Component {
     baker.append('ciudad', this.state.ciudad);
     baker.append('horario', this.state.horario);
     baker.append('logoUrl', this.state.logoUrl);
-    
-   
+
+
     axios
       .patch(
-        `${process.env.REACT_APP_API_URL}/api/usuario/${loggedInUser._id}`,baker,
-        {headers: { 'content-type': 'multipart/form-data' }, 
-        withCredentials: true}
+        `${process.env.REACT_APP_API_URL}/api/usuario/${loggedInUser._id}`, baker,
+        {
+          headers: { 'content-type': 'multipart/form-data' },
+          withCredentials: true
+        }
       )
       .then((response) => {
         this.props.getUser(response.data.user);
         this.setState({ redirect: true });
+      })
+      .catch((error) => {
+        console.log(error.response.data.message)
+        this.setState({ message: error.response.data.message })
       });
   };
 
@@ -67,6 +74,13 @@ export class FormBaker extends Component {
   };
 
   render() {
+    let message = ""
+    if (this.state.message) {
+      message =
+        <small className="form-text text-muted">
+          {this.state.message}
+        </small>
+    }
     return (
       <div className="container mt-50 mb-100">
         <div className="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3">
@@ -102,6 +116,7 @@ export class FormBaker extends Component {
               <label className="label-form">Dirección*</label>
               <small className="form-text text-muted">
                 Introduce Calle, Numero y Ciudad
+                </small>
               <input
                 type="text"
                 className="form-control"
@@ -122,11 +137,11 @@ export class FormBaker extends Component {
                 onChange={(e) => this.handleChange(e)}
               />
             </div>
-            <UploadImage handleImageChange={this.handleImageChange} fieldName="logoUrl"/>
+            <UploadImage handleImageChange={this.handleImageChange} fieldName="logoUrl" />
             <button class="btn boton-form" type="submit" userUpdate={this.updateProfile}>
               Guardar
           </button>
-
+            {message}
             {this.renderRedirect()}
           </form>
         </div>

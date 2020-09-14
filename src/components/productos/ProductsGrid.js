@@ -21,7 +21,7 @@ refresh() {
     else if (this.props.profile) {
         axios.get(`${process.env.REACT_APP_API_URL}/api/producto/profile/`, { withCredentials: true })
             .then(response => {
-                console.log("prodcut", response.data)
+                
                 this.setState({ productos: response.data })
 
             })
@@ -29,7 +29,7 @@ refresh() {
         if (this.props.userId) {
             axios.get(`${process.env.REACT_APP_API_URL}/api/producto/all/?user_id=` + this.props.userId)
                 .then(response => {
-                    console.log("prodcut", response.data)
+                    
                     this.setState({ productos: response.data })
 
                 })
@@ -37,7 +37,7 @@ refresh() {
 
             axios.get(`${process.env.REACT_APP_API_URL}/api/producto/all/`+ "?time=" + new Date().valueOf())
                 .then(response => {
-                    console.log("prodcut", response.data)
+                   
                     this.setState({ productos: response.data })
 
                 })

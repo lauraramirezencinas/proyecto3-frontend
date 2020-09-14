@@ -18,14 +18,11 @@ export class Busqueda extends Component {
     }
 
     handleChange = async (e) => {
-        console.log("HANDLE" + e.target.value )
          await this.setState({ search: e.target.value })
-        console.log("state",this.state.search)
         this.updateIt()      
     }
 
     updateIt()  {
-        console.log("UPDATEIT" + this.state.search )
         axios.get(`${process.env.REACT_APP_API_URL}/api/producto/all/?search=`+ this.state.search + "&time="+new Date().valueOf())
             .then(resp => {             
                 console.log(resp.data.length)  

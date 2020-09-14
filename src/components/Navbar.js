@@ -18,7 +18,7 @@ export class Encabezado extends Component {
         )
 
         if (this.props.user) {
-            console.log("Hay usuario logueado!", this.props.user)
+            console.log("Hay usuario logueado!")
             authLink = (
                 <>
                     <li className="nav-item">
@@ -39,7 +39,7 @@ export class Encabezado extends Component {
 
                 <Navbar expand="lg">
                     <div className="container">
-                    <Navbar.Brand href="/">Sugar-Place</Navbar.Brand>
+                    <Navbar.Brand className="nav-logo"href="/">Sugar-Place</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
