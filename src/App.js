@@ -6,7 +6,7 @@ import Encabezado from './components/Navbar';
 import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
 import Signup from './components/auth/Signup';
-//import ProtectedRoute from './auth/protected-route.js'
+import ProtectedRoute from './auth/protected-route.js'
 import Profile from './components/profile/Profile';
 import FormBaker from './components/auth/FormBaker';
 import Home from './components/Home';
@@ -51,6 +51,7 @@ class App extends Component {
           component={Profile}
           render={(props) => <Profile getUser={this.getTheUser} user={this.state.loggedInUser}/>}
           />   */}
+
           <Route path="/formbaker"  render={(props) => <FormBaker {...props} getUser={this.getTheUser} user={this.state.loggedInUser} />} /> 
           <Route exact path="/profile" render={ (props)=> <Profile {...props} getUser={this.getTheUser} user={this.state.loggedInUser} /> }/>
           <Route exact path="/pedidos" component={HojaPedidoBaker} />

@@ -520,10 +520,12 @@ font-family: 'Montserrat', sans-serif;
 }
 
 .mapa{
-  width: 350px;
   height: 200px;
+  margin: auto;
 }
-
+.bakery{
+  text-align: center;
+}
 .nav-logo{
   font-family: 'Lobster', cursive!important ;
     font-size: 22px!important 
@@ -531,6 +533,13 @@ font-family: 'Montserrat', sans-serif;
 
 .nuevo{
   margin-top: -1px;
+}
+
+.errores{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  text-align: center;
+  color:red !important;
 }
 
 @media (min-width: 576px) { 
@@ -609,6 +618,9 @@ font-family: 'Montserrat', sans-serif;
     .btn-group-vertical {
       flex-direction: row!important;
 
+  }
+  .bakery{
+    text-align: justify;
   }
    
  }

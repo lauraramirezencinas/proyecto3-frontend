@@ -29,7 +29,7 @@ export class AddProducto extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    this.props.onHide()
+    
 
     const producto = new FormData();
     producto.append('nombre', this.state.nombre);
@@ -45,9 +45,9 @@ export class AddProducto extends Component {
         {headers: { 'content-type': 'multipart/form-data' }, 
         withCredentials: true}
       )
-      .then((response) => {
+      .then(async (response) => {
         console.log(response.data)
-        this.setState({
+        await this.setState({
           nombre: "",
           descripcion: "",
           precio: "",
@@ -55,6 +55,7 @@ export class AddProducto extends Component {
           imagenUrl:"", 
           message:""
         })
+        this.props.onHide()
         let url = "/profile/";
         window.location.href = url;
       })
@@ -70,9 +71,11 @@ export class AddProducto extends Component {
     let message = ""
     if (this.state.message) {
       message =
-        <small className="form-text text-muted">
+        <small className="form-text errores">
           {this.state.message}
         </small>
+    }else{
+      
     }
 
     return (
@@ -150,11 +153,10 @@ export class AddProducto extends Component {
             
               <button className="btn boton-form" type="submit" >
                 Guardar
-          </button>
-          {message}
+          </button>         
             </Modal.Footer>
-
           </form>
+          {message}
         </div>
       </Modal>
     );

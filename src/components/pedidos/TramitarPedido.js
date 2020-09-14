@@ -11,7 +11,7 @@ export class TramitarPedido extends Component {
             nombre: "",
             telefono: "",
             email: "",
-            recogida: ""
+            recogida: "1 hora"
         }
     }
 
@@ -70,7 +70,7 @@ export class TramitarPedido extends Component {
         let message = ""
         if (this.state.message) {
             message =
-                <small className="form-text text-muted">
+                <small className="form-text">
                     {this.state.message}
                 </small>
         }

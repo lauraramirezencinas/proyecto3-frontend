@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route , Redirect} from 'react-router-dom'
+import Profile from '../components/profile/Profile'
 
 
 const protectedRoute  = ({component: Component, user, ...rest}) => {
@@ -8,6 +9,7 @@ const protectedRoute  = ({component: Component, user, ...rest}) => {
         render={ props  => {
             if(user){
               return <Component {...props} loggedInUser={user}/> 
+              
             } else {
               return <Redirect to={{pathname: '/login', state: {from: props.location}}} />
             }

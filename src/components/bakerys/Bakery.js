@@ -55,11 +55,11 @@ export class Bakery extends Component {
             } else {
                 bakery =
                     <>
-                        <div className="col-xs-12 col-md-4 mt-20">
+                        <div className="col-xs-12 col-md-4 mt-20 bakery">
                             <img src={this.props.user.logoUrl} className="img-perfil rounded-circle" alt="logo" />
                         </div>
-                        <div className="col-xs-12 col-md-4 mt-20">
-                            <p className="bak-campos">NOMBRE:  <span className="bak-val">{this.props.user.nombreNegocio}</span></p>
+                        <div className="col-xs-12 col-md-8 mt-20">
+                            <h1 className="perfil mb-20 bakery">{this.props.user.nombreNegocio}</h1>
                             <p className="bak-campos">DESCRIPCION:  <span className="bak-val">{this.props.user.descripcion}</span></p>
                             <p className="bak-campos">DIRECCÓN: <span className="bak-val">{this.props.user.direccion.calleNumero} </span></p>
                             <p className="bak-campos">HORARIO:  <span className="bak-val">{this.props.user.horario}</span></p>
@@ -69,7 +69,7 @@ export class Bakery extends Component {
             }
         }
         return (
-            <div className="row container" >
+            <div className="row container " >
                 {bakery}
             </div>
         )

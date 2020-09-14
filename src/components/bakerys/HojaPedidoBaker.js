@@ -8,11 +8,13 @@ export class HojaPedidoBaker extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            first: true,
             pedidos: [],
             filtroEstado: null,
-            filtro: false
-
+            filtro: false,
+            notification: false
         }
+
     }
 
     handleChange = async (event) => {
@@ -23,27 +25,28 @@ export class HojaPedidoBaker extends Component {
         });
         this.actualizarPedidos()
     };
+
     componentWillUnmount() {
         this.timer = null;
     }
+
+    closeNotification() {
+        this.setState({ notification: false })
+    }
+
     actualizarPedidos() {
         if (this.state.filtro) {
             axios.get(`${process.env.REACT_APP_API_URL}/api/pedido/all/?status=` + this.state.filtroEstado + "&time=" + new Date().valueOf(),
                 { withCredentials: true })
                 .then(response => {
-                    let notificacion = ""
                     let total = this.state.pedidos.length
                     let newTotal = response.data.length
-                    if (total > 0 && total < newTotal) {
-                        //     console.log("NOTIFY NUEVO PEDIDO")
-                        // notificacion = <Alert variant='success'>
-                        //             Pedido nuevo
-                        //             </Alert>
-                        // alert("nuevoPedido")
-                        alert("Pedido nuevo")
+                    if (this.state.first || total > 0 && total < newTotal) {
+                        if (!this.state.first) {
+                            this.setState({ notification: true })
+                        }
+                        this.setState({ pedidos: response.data, first: false })
                     }
-                    this.setState({ pedidos: response.data })
-
                 })
                 .catch(err => {
                     console.log(err)
@@ -51,19 +54,14 @@ export class HojaPedidoBaker extends Component {
         } else {
             axios.get(`${process.env.REACT_APP_API_URL}/api/pedido/all/` + "?time=" + new Date().valueOf(), { withCredentials: true })
                 .then(response => {
-                    let notificacion = ""
                     let total = this.state.pedidos.length
                     let newTotal = response.data.length
-                    if (total > 0 && total < newTotal) {
-                        console.log("NOTIFY NUEVO PEDIDO")
-                        // notificacion =
-                        //     <Alert variant='success'>
-                        //         Pedido nuevo 
-                        //     </Alert>
-                        alert("Pedido nuevo")
+                    if (this.state.first || total > 0 && total < newTotal) {
+                        if (!this.state.first) {
+                            this.setState({ notification: true })
+                        }
+                        this.setState({ pedidos: response.data, first: false })
                     }
-                    this.setState({ pedidos: response.data })
-
                 })
                 .catch(err => {
                     console.log(err)
@@ -72,10 +70,8 @@ export class HojaPedidoBaker extends Component {
     }
 
 
-
     componentDidMount() {
         this.timer = setInterval(() => this.actualizarPedidos(), 10000);
-
         this.actualizarPedidos()
     }
 
@@ -86,11 +82,17 @@ export class HojaPedidoBaker extends Component {
 
         const pedidosTodos = pedidosOrdenados.map((pedido) =>
             <PedidoBaker key={pedido._id} pedido={pedido} />)
-
+        let notificacion = ""
+        if (this.state.notification) {
+            notificacion = <Alert variant='success' onClose={() => this.closeNotification()} dismissible>
+                Pedido nuevo
+        </Alert>
+        }
 
         return (
             <div className="" >
                 <div className="container">
+                    {notificacion}
                     <form>
                         <div class="form-group ">
                             <div className="row mt-30">
