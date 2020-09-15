@@ -39,14 +39,16 @@ export class HojaPedidoBaker extends Component {
             axios.get(`${process.env.REACT_APP_API_URL}/api/pedido/all/?status=` + this.state.filtroEstado + "&time=" + new Date().valueOf(),
                 { withCredentials: true })
                 .then(response => {
-                    let total = this.state.pedidos.length
-                    let newTotal = response.data.length
-                    if (this.state.first || total > 0 && total < newTotal) {
-                        if (!this.state.first) {
-                            this.setState({ notification: true })
-                        }
-                        this.setState({ pedidos: response.data, first: false })
-                    }
+                    // let total = this.state.pedidos.length
+                    // let newTotal = response.data.length
+                    // if (this.state.first || total > 0 && total < newTotal) {
+                    //     if (!this.state.first) {
+                    //         this.setState({ notification: true })
+                    //     }
+                    //     console.log("pedidos filtrados", response.data)
+                    //    //this.setState({ pedidos: response.data, first: false })
+                    // }
+                    this.setState({ pedidos: response.data, first: false })
                 })
                 .catch(err => {
                     console.log(err)

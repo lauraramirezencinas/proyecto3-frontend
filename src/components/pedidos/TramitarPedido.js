@@ -47,7 +47,6 @@ export class TramitarPedido extends Component {
             email: email,
             recogida: recogida,
             precioTotal: precioFinal,
-            message: ""
         }
         axios.post(`${process.env.REACT_APP_API_URL}/api/pedido/`, data, { withCredentials: true })
             .then(response => {
