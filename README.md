@@ -1,68 +1,72 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# PROYECTO3
+SUGAR-PLACE
+# Developers: 
+Laura Ramirez
+# Link to App: 
+https://sugar-place.herokuapp.com/
 
-## Available Scripts
+* use in mode mobile device at browser, iphone X prefered
 
-In the project directory, you can run:
 
-### `npm start`
+## Description
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Un Marketplace donde las pastelerias registrandose puedan poner sus productos. El ususario anónimo pueda hacer una busqueda y ver los detalles del producto como el precio, ingredientes y toda la informacion de la panaderia (ubicacion, horarios) y hacer un pedido para ir a recogerlo. 
+ 
+## User Stories
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- **homepage** - Como usario anonimo, quiero poder hacer la busqueda el producto, y visualizar en todos los lugares que podria comprarlos
+- **sign up** - Como usuario, quiero darme de alta en la página web para poder poner todos mis prodcutos 
+- **login** - Como usuario, quiero poder iniciar sesión en la página web para poder volver a mi cuenta y actuizar mis productos
+- **logout** - Como usuario, quiero poder cerrar sesión en la página web
+- **products list** - Como usuario, quiero ver todos los lugares donde puedo comprar mi producto
+- **product details** - Como usuario, quiero ver todos los detalles del producto e información de la panaderia
+- **404** - Como ususario quiero ver una página de error bonita 
+- **500** - Como ususario quiero ver una página de error bonita 
 
-### `npm test`
+## Backlog
+-**Creación de pedido Anomino**
+-**Camabiar estado de pedido**
+-**Filtrar por estado de pedido**
+-**Alerta nuevo pedido**
+-**Comentarios**
+-**Email usuario**
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## ROUTES:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **/signup => Sign up**
+- **/formBaker => Registro Baker**
+- **/login => Log In**
+- **//logout => Logout**
+- **/profile => ver perfil, con sus productos (logueado)**
+- **/pedidos=> ver pedidos y estados del pedido (logueado)**
+- **/=> ver todos los productos**
+- **/tienda/:id => ver una panaderia con sus productos**
+- **/pedido/:id => ver detalles de un pedido(anonimo)**
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## WIFRAMES
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Links
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Jira:  https://lauraramirez.atlassian.net/secure/RapidBoard.jspa?rapidView=2&projectKey=PROYEC&selectedIssue=PROYEC-38
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Git
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The url to your repository and to your deployed project
 
-### Code Splitting
+Repo backend :  https://github.com/lauraramirezencinas/proyecto3-backend.git
+Repo frontend : https://github.com/lauraramirezencinas/sugar-place-frontend
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+App: https://sugar-place.herokuapp.com/
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### Slides
 
-### Making a Progressive Web App
+The url to your presentation slides
+https://docs.google.com/presentation/d/1UYGCT4-OjqdOTPl-vPynqBTnhqqMz7pl1E8uT1NeqxM/edit?usp=sharing
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
