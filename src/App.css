@@ -93,7 +93,13 @@ button:focus{
 .mb-100{
   margin-bottom:100px;
 }
+.pb-40{
+  padding-bottom: 40px;
+}
 
+.pt-40{
+  padding-top: 40px;
+}
   /* NAV BAR*/
 .navbar-light .navbar-nav .nav-link  {
   color: #E82788 !important;
@@ -486,6 +492,8 @@ cursor: pointer;
 .pedido-baker:nth-child(odd) {
   background:#ededed;
 }
+
+
 .pedido-baker {
   padding: 20px 0;
 }
@@ -542,12 +550,42 @@ font-family: 'Montserrat', sans-serif;
   color:red !important;
 }
 
-.alert-success{
-  border: 1px solid #E32283!important;
-  background-color: white!important;
-  color: #E32283!important;
-    
+.reseña{
+  margin-left: 15px;
 }
+
+.tit-comentarios{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color:#E32283 !important;
+}
+
+.nombre-coment{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+.info-coment{
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  margin-top: 15px
+}
+
+.tit-pagina-reseñas{
+  color:#E32283 !important;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.review-baker:nth-child(even) {
+  background:#ededed;
+}
+
+.fecha-re{
+  color:#E32283 !important;
+}
+
 @media (min-width: 576px) { 
   
 .card-columns {

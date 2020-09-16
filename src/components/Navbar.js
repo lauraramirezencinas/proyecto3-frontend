@@ -28,6 +28,9 @@ export class Encabezado extends Component {
                         <Link to='/pedidos' className="nav-link">Pedidos</Link >
                     </li>
                     <li className="nav-item">
+                        <Link to='/reviews' className="nav-link">Reseñas</Link >
+                    </li>
+                    <li className="nav-item">
                         <Link to='/logout' className="nav-link">Hola {this.props.user.nombre},Logout </Link >
                     </li>
                 </>

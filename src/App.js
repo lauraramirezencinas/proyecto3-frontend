@@ -13,6 +13,7 @@ import Home from './components/Home';
 import Tienda from './components/Tienda';
 import FinalPedido from './components/pedidos/FinalPedido';
 import HojaPedidoBaker from './components/bakerys/HojaPedidoBaker';
+import HojaReviewsBaker from './components/bakerys/HojaReviewsBaker';
 
 class App extends Component {
 
@@ -55,6 +56,7 @@ class App extends Component {
           <Route path="/formbaker"  render={(props) => <FormBaker {...props} getUser={this.getTheUser} user={this.state.loggedInUser} />} /> 
           <Route exact path="/profile" render={ (props)=> <Profile {...props} getUser={this.getTheUser} user={this.state.loggedInUser} /> }/>
           <Route exact path="/pedidos" component={HojaPedidoBaker} />
+          <Route exact path="/reviews" render={(props)=><HojaReviewsBaker user={this.state.loggedInUser} />} />
           <Route  exact path="/baker/:id" component={Tienda}/>
           <Route exact path="/pedido/:id" component={FinalPedido}/>
         </Switch>
