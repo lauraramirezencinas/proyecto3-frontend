@@ -325,7 +325,6 @@ a {
 .inc{
   height: 41px;
   border: 2px solid #E32283;
-  border-radius: 31%;
   color: #E32283;
   background-color: white;
   width: 41px;
@@ -338,7 +337,8 @@ a {
 }
 
 .counter{
-  margin-left: 130px!important;
+margin-left: 100px!important;
+
   
 }
 
@@ -542,6 +542,12 @@ font-family: 'Montserrat', sans-serif;
   color:red !important;
 }
 
+.alert-success{
+  border: 1px solid #E32283!important;
+  background-color: white!important;
+  color: #E32283!important;
+    
+}
 @media (min-width: 576px) { 
   
 .card-columns {
@@ -560,7 +566,7 @@ font-family: 'Montserrat', sans-serif;
 .inc{
   height: 35px!important ;
   border: 2px solid #E32283;
-  border-radius: 31%;
+
   color: #E32283;
   background-color: white;
 }

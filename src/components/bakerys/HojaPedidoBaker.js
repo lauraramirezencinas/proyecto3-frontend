@@ -21,7 +21,8 @@ export class HojaPedidoBaker extends Component {
         const { name, value } = event.target;
         await this.setState({
             [name]: value,
-            filtro: true
+            filtro: true,
+            first: true
         });
         this.actualizarPedidos()
     };
@@ -35,24 +36,16 @@ export class HojaPedidoBaker extends Component {
     }
 
     actualizarPedidos() {
-        if (this.state.filtro) {
-            axios.get(`${process.env.REACT_APP_API_URL}/api/pedido/all/?status=` + this.state.filtroEstado + "&time=" + new Date().valueOf(),
-                { withCredentials: true })
-                .then(response => {
-                    // let total = this.state.pedidos.length
-                    // let newTotal = response.data.length
-                    // if (this.state.first || total > 0 && total < newTotal) {
-                    //     if (!this.state.first) {
-                    //         this.setState({ notification: true })
-                    //     }
-                    //     console.log("pedidos filtrados", response.data)
-                    //    //this.setState({ pedidos: response.data, first: false })
-                    // }
-                    this.setState({ pedidos: response.data, first: false })
-                })
-                .catch(err => {
-                    console.log(err)
-                })
+        if (this.state.filtro && this.state.filtroEstado != "all") {
+                axios.get(`${process.env.REACT_APP_API_URL}/api/pedido/all/?status=` + this.state.filtroEstado + "&time=" + new Date().valueOf(),
+                    { withCredentials: true })
+                    .then(response => {
+                        this.setState({ pedidos: response.data, first: false })
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            
         } else {
             axios.get(`${process.env.REACT_APP_API_URL}/api/pedido/all/` + "?time=" + new Date().valueOf(), { withCredentials: true })
                 .then(response => {
@@ -91,6 +84,8 @@ export class HojaPedidoBaker extends Component {
         </Alert>
         }
 
+
+
         return (
             <div className="" >
                 <div className="container">
@@ -105,7 +100,7 @@ export class HojaPedidoBaker extends Component {
                                     <select class="custom-select sel-status" name="filtroEstado"
                                         value={this.state.filtroEstado}
                                         onChange={(e) => this.handleChange(e)} >
-                                        <option value="" selected>Todos</option>
+                                        <option value="all" selected>Todos</option>
                                         <option value="Nuevo">Nuevo</option>
                                         <option value="EnPreparacion">En preparacion</option>
                                         <option value="Finalizado">Finalizado</option>
