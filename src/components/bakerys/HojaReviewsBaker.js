@@ -28,7 +28,7 @@ export class HojaReviewsBaker extends Component {
 
 
         return (
-            <div className="mt-50"> 
+            <div className="mt-50" > 
                 
                 {comentarios} 
 

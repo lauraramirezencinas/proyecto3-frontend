@@ -6,7 +6,7 @@ import Pedido from './pedidos/Pedido';
 import FormReviews from './reviews/FormReviews';
 import { Button } from "react-bootstrap";
 import HojaReviews from './reviews/HojaReviews';
-
+import $ from 'jquery';
 
 
 
@@ -16,14 +16,15 @@ export class Tienda extends Component {
         super(props)
         this.state = {
             user: null,
-            pedido: {}, 
-            modalOpen: false, 
-            reviews:[]
+            pedido: {},
+            modalOpen: false,
+            reviews: [],
+
 
         }
         this.openModal = this.openModal.bind();
         this.closeModal = this.closeModal.bind();
-        this.actualizarReviews=this.actualizarReviews.bind(this)
+        this.actualizarReviews = this.actualizarReviews.bind(this)
     }
 
     openModal = () => {
@@ -44,15 +45,21 @@ export class Tienda extends Component {
                 this.setState({ user: response.data })
             })
         this.actualizarReviews()
+
+        $("button").click(function() {
+            $('html,body').animate({
+                scrollTop: $(".second").offset().top},
+                'slow');
+        });
     }
 
     modifyItem = (itemId, quantity, precio, nombre, idUsuario) => {
         let pedido = this.state.pedido
         pedido[itemId] = {
-            quantity:quantity,
-            precio:precio,
-            nombre:nombre,
-            idUsuario:idUsuario
+            quantity: quantity,
+            precio: precio,
+            nombre: nombre,
+            idUsuario: idUsuario
         }
         this.setState({
             pedido: pedido
@@ -61,24 +68,26 @@ export class Tienda extends Component {
 
     }
 
-    actualizarReviews(){
-        axios.get(`${process.env.REACT_APP_API_URL}/api/review/`+ this.props.match.params.id + "?time=" + new Date().valueOf(), { withCredentials: true })
-        .then(response=>{
-            this.setState({reviews:response.data})
-            
-        })
-        .catch(err => {
-            console.log(err)
-        })
+    actualizarReviews() {
+        axios.get(`${process.env.REACT_APP_API_URL}/api/review/` + this.props.match.params.id + "?time=" + new Date().valueOf(), { withCredentials: true })
+            .then(response => {
+                this.setState({ reviews: response.data })
+
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
 
+
+
     render() {
-        
+
         let pedido = ""
-        if (Object.keys(this.state.pedido).length===0) {
-            pedido=""
-        }else{
+        if (Object.keys(this.state.pedido).length === 0) {
+            pedido = ""
+        } else {
             pedido =
                 <div className="pedido">
                     <div className="container">
@@ -87,16 +96,25 @@ export class Tienda extends Component {
                 </div>
         }
 
+
+
+
         return (
             <div>
                 <div className="container tienda mb-60">
                     <h1 className="mt-30 perfil"></h1>
                     <Bakery user={this.state.user} />
+                    <div className="first">
+                        <button type="button" className="ver-reseñas out">Ver reseñas</button>
+                    </div>
                     <ProductsGrid userId={this.props.match.params.id} modifyItem={this.modifyItem} />
                     <Button className="boton-editar reseña" variant="primary" onClick={this.openModal}>Añadir reseña</Button>
-                    <FormReviews user={this.state.user} show={this.state.modalOpen} onHide={() => this.closeModal()} actualizarReviews={this.actualizarReviews}/>
-                    <HojaReviews userId={this.props.match.params.id} reviews={this.state.reviews} actualizarReviews={this.actualizarReviews} />
-                
+                    <FormReviews user={this.state.user} show={this.state.modalOpen} onHide={() => this.closeModal()} actualizarReviews={this.actualizarReviews} />
+                    <div class="second">
+                        <HojaReviews id="hojareviews" userId={this.props.match.params.id} reviews={this.state.reviews} actualizarReviews={this.actualizarReviews} />
+                    </div>
+
+
                 </div>
                 {pedido}
             </div>

@@ -74,7 +74,7 @@ export class FormReviews extends Component {
         return (
             <Modal {...this.props} aria-labelledby="contained-modal-title-vcenter">
                 <Modal.Header closeButton>
-                    <Modal.Title>Añadir comentario</Modal.Title>
+                    <Modal.Title>Añadir reseña</Modal.Title>
                 </Modal.Header>
                 <div className="container">
                     <form onSubmit={this.handleFormSubmit}>
@@ -97,7 +97,7 @@ export class FormReviews extends Component {
                                 <div className="form-group">
                                     <label>Numero de Pedido*</label>
                                     <input
-                                        type="text"
+                                        type="number"
                                         className="form-control"
                                         placeholder=""
                                         name="numeroPedido"

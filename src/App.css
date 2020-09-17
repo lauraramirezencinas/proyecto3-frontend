@@ -48,8 +48,12 @@ body{
   }
 }
 
-.height-100{
-}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+input[type=number] { -moz-appearance:textfield; }
 
 #root{
   min-height: 100%;
@@ -327,6 +331,9 @@ a {
   margin-left: -20px;
 }
 
+.nav-link.active{
+  border-bottom: 2px solid #E32283;;
+}
 
 .inc{
   height: 41px;
@@ -586,6 +593,26 @@ font-family: 'Montserrat', sans-serif;
   color:#E32283 !important;
 }
 
+.ver-reseñas{
+  border: 2px solid  #E32283!important;
+  background-color: white;
+  color:#E32283 !important;
+  font-family: 'Montserrat', sans-serif !important;
+  margin-left: 10px;
+  margin-top: 18px;
+  padding: 5px;
+
+}
+
+.out{
+  border-color: #4CAF50;
+    color: green;
+}
+.out:hover {
+  background-color: #E32283;
+  color: white!important;;
+}
+
 @media (min-width: 576px) { 
   
 .card-columns {
@@ -682,6 +709,9 @@ font-family: 'Montserrat', sans-serif;
     .counter{
       margin-left: 80px!important;
       margin-top: 6px;
+    }
+    .active1{
+      border-bottom: 1px solid #E82788;
     }
    
     
